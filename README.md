@@ -35,7 +35,7 @@ The cards work on top of the [Sun](https://www.home-assistant.io/integrations/su
 - **Sky band** whose colors follow the sun's elevation — day blue, the warm golden hour, the blue hour, the dark night with twinkling stars — with the **sun's arc** of the day inside it: dashed from sunrise to sunset, solid up to now, the sun where it is; by night the arc runs from the sunset to the next sunrise and the **moon, drawn with its phase**, crosses it. Sunrise and sunset times sit in its bottom corners
 - Four tiles: **Daylight** (length of the day and its change since yesterday), **Moon** (phase drawn as it looks, illumination, next full or new moon), **Dawn · dusk** (civil twilight, with the solar noon), **Season** (current season and days until the next one)
 - **Details** section, folded by default: golden and blue hours (morning and evening), solar noon and the sun's highest elevation, current elevation and azimuth, moonrise and moonset, the moon's age, the next full and new moons, the next solstice or equinox
-- Animations: the sun (or the moon) sliding along its arc to where it is, its rays and glow, drifting clouds, the shimmering horizon of the golden hour, twinkling stars and a shooting star at night, colors fading from one light to the next (see [Animations](#animations)); `animations: false` and `prefers-reduced-motion` keep it still
+- Animations: the sun (or the moon) sliding along its arc to where it is, its rays and glow, drifting clouds and a flock of birds, the shimmering horizon of the golden hour with its tinted clouds and the sun's reflection on the ground, the evening star of the blue hour, twinkling stars, a shooting star and a veil of cloud at night, colors fading from one light to the next, and animated icons in the header and the tiles (see [Animations](#animations)); `animations: false` and `prefers-reduced-motion` keep it still
 - Detail button on the mini card (top right): it switches the mini card to the full card's content and back; a click anywhere outside the card brings the compact view back
 - Click the band or a tile to open the more-info dialog of its entity
 - Visual editor in the dashboard UI for both cards (no YAML needed)
@@ -144,7 +144,7 @@ language: fr
 | `show_sky` | both | `true` | Sky band with the sun's arc |
 | `show_tiles` | both | `true` | Daylight, Moon, Dawn · dusk and Season tiles |
 | `details` | both | `collapsed` | Details section: `collapsed` (folded, click its title to unfold it — or Tab to it and press Enter or Space), `expanded` (unfolded) or `hidden`. Unfolded, it folds back on a click anywhere else and when the card leaves the page |
-| `animations` | both | `true` | `false` keeps the sky still (the sun and moon at their place, no twinkling) |
+| `animations` | both | `true` | `false` keeps the card still (the sun and moon at their place, no twinkling, still icons) |
 | `season_type` | both | `astronomical` | Season computed by the card when there is no Season sensor, and its next change: `astronomical` (solstices and equinoxes) or `meteorological` (1st of March, June, September, December) |
 | `entities` | both | — | YAML only. Map of entities replacing the ones found: `sun`, `moon_phase`, `lunar_phase`, `moonrise`, `moonset`, `illumination`, `moon_age`, `next_full_moon`, `next_new_moon`, `season` |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `it`, `nl`, `pt`, `pl`, `sr`, `sr-Latn`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
@@ -153,25 +153,43 @@ language: fr
 
 ### Animations
 
-The sky band plays one animation per light of the day; every animation honours `animations: false` and `prefers-reduced-motion`. When the card appears, the sun (or the moon) slides along its arc to where it is now; afterwards it moves on minute by minute and the colors of the band fade from one light to the next.
+The sky band plays one animation per light of the day, and the header and the tiles' icons move too; every animation honours `animations: false` and `prefers-reduced-motion`. When the card appears, the sun (or the moon) slides along its arc to where it is now; afterwards it moves on minute by minute and the colors of the band fade from one light to the next.
 
-By day, the sun on its arc with turning rays and a breathing glow, clouds drifting across the blue sky:
+By day, the sun on its arc with turning rays and a breathing glow, clouds drifting across the blue sky and, now and then, a flock of birds crossing it:
 
 | Light | Dark |
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/day.gif" alt="day animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/day-dark.gif" alt="day animation dark" width="400"> |
 
-In the golden hour, the low orange sun close to the sunset and the warm glow of the horizon shimmering:
+In the golden hour, the low orange sun close to the sunset, the warm glow of the horizon shimmering, clouds tinted by the low sun and its reflection rippling on the ground:
 
 | Light | Dark |
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/golden-hour.gif" alt="golden hour animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/golden-hour-dark.gif" alt="golden hour animation dark" width="400"> |
 
-At night, the moon with its phase crossing the night arc from the sunset to the sunrise, twinkling stars and a shooting star:
+In the blue hour, the deep blue sky after the sunset with its first stars, and the evening star (the morning star before the sunrise) shining over the horizon on the sun's side:
+
+| Dark | Light |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/blue-hour.gif" alt="blue hour animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/blue-hour-light.gif" alt="blue hour animation light" width="400"> |
+
+At night, the moon with its phase crossing the night arc from the sunset to the sunrise, twinkling stars, a shooting star and a thin veil of cloud slowly passing:
 
 | Dark | Light |
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/night.gif" alt="night animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/night-light.gif" alt="night animation light" width="400"> |
+
+The tiles: the daylight sun turning, the moon glowing as bright as it is lit, the half sun rising and setting on the dawn · dusk tile, and the season's own picture (a flower swaying in spring, the summer sun's turning rays, leaves falling in autumn, snow in winter). The header badge's sun turns too, its moon rocks by night:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/tiles.gif" alt="tiles animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/tiles-dark.gif" alt="tiles animation dark" width="400"> |
+
+The mini card: the sun on its strip glowing (the moon by night), the header badge's sun turning and the moon's glow:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/mini-strip.gif" alt="mini card animation" width="380"> | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/mini-strip-dark.gif" alt="mini card animation dark" width="380"> |
 
 ### Cards
 

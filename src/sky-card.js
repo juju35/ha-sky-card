@@ -1526,6 +1526,10 @@ const ICONS = {
   collapse: '<path d="M19.5 3.09 15 7.59V4h-2v7h7V9h-3.59l4.5-4.5zM4 13v2h3.59l-4.5 4.5 1.41 1.41L9 16.41V20h2v-7z"/>',
 };
 
+// The dawn · dusk tile's icon: the half sun rising and setting on the horizon, its rays coming and going.
+const TWILIGHT_ANIM =
+  '<svg class="icon tw" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18h20v2H2z"/><path class="tw-sun" d="M6 17a6 6 0 0 1 12 0z"/>' +
+  '<path class="tw-rays" d="M3.5 10.9l1.4-1.4 1.8 1.8-1.4 1.4zm17 0-1.4-1.4-1.8 1.8 1.4 1.4zM11 5h2v3.2h-2z"/></svg>';
 const svgIcon = (name, cls = "") => `<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>`;
 
 // ---------------------------------------------------------------------------
@@ -2195,7 +2199,8 @@ const moonDisc = (cx, cy, r, moon) =>
     ([x, y, s]) => `<circle class="crater" cx="${(cx + x * r).toFixed(2)}" cy="${(cy + y * r).toFixed(2)}" r="${(s * r).toFixed(2)}"/>`,
   ).join("")}</g>`;
 
-const moonSvg = (moon, cls = "") => `<svg class="moon-pic ${cls}" viewBox="0 0 40 40" aria-hidden="true">${moonDisc(20, 20, 17, moon)}</svg>`;
+const moonSvg = (moon, cls = "") =>
+  `<svg class="moon-pic ${cls}" viewBox="0 0 40 40" aria-hidden="true" style="--mg:${moon.illumination.toFixed(2)}"><circle class="m-glow" cx="20" cy="20" r="20"/>${moonDisc(20, 20, 17, moon)}</svg>`;
 
 // Sky colors (top, middle, bottom) at a few elevations of the sun, blended in between: deep night, the blue hour,
 // the golden hour around the horizon, then the day.
@@ -2329,11 +2334,29 @@ function bandSvg(m, still) {
   const gx = arc ? (night ? (arc.progress < 0.5 ? X0 : X1) : X0 + (X1 - X0) * arc.progress) : W / 2;
   const glow = phase === "golden" || phase === "blue" ? `<ellipse class="horizon-glow" cx="${f1(gx)}" cy="${HY}" rx="110" ry="36" fill="url(#sk-horizon)"/>` : "";
   const shooting = phase === "night" ? '<path class="shooting" d="M250 10L214 32"/>' : "";
+  // A flock of birds crossing the day sky now and then.
+  const bird = (x, y, late) => `<g transform="translate(${x} ${y})"><path class="bird${late ? " late" : ""}" d="M-3 0Q-1.5 -2 0 0Q1.5 -2 3 0"/></g>`;
+  const birds = phase === "day" ? `<g class="birds">${bird(0, 0)}${bird(-9, 4, 1)}${bird(-7, -5, 1)}</g>` : "";
+  // In the golden hour: clouds tinted by the low sun and its reflection rippling on the ground under it.
+  const goldenClouds =
+    phase === "golden"
+      ? '<g class="clouds golden"><g class="cloud"><ellipse cx="96" cy="34" rx="22" ry="4.5"/><ellipse cx="104" cy="30" rx="10" ry="5"/></g>' +
+        '<g class="cloud late"><ellipse cx="214" cy="48" rx="18" ry="4"/></g></g>'
+      : "";
+  const reflect =
+    phase === "golden" && !night
+      ? `<g class="reflect"><ellipse cx="${f1(gx)}" cy="${HY + 6}" rx="16" ry="1.4"/><ellipse class="late" cx="${f1(gx)}" cy="${HY + 12}" rx="10" ry="1.1"/></g>`
+      : "";
+  // In the blue hour: the evening (or morning) star shining over the horizon on the sun's side.
+  const vx = gx < W / 2 ? gx + 56 : gx - 56;
+  const star = phase === "blue" ? `<g class="evening-star" transform="translate(${f1(vx)} ${HY - 12})"><circle class="v-glow" r="5"/><circle r="1.6"/></g>` : "";
+  // At night: a thin veil of cloud slowly passing.
+  const veil = phase === "night" ? '<g class="veil"><ellipse cx="120" cy="46" rx="46" ry="2.2"/><ellipse cx="146" cy="50" rx="30" ry="1.6"/></g>' : "";
   return (
     `<svg class="band-svg p-${phase}${still ? " still" : ""}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">` +
     `<defs>${skyGradient("sk-sky", e)}${BAND_DEFS}<clipPath id="sk-above"><rect width="${W}" height="${HY}"/></clipPath></defs>` +
-    `<rect class="sky-fill" width="${W}" height="${H}" fill="url(#sk-sky)"/>${starsSvg(STARS, starLight(e))}${shooting}${clouds}${glow}` +
-    `<rect class="ground" y="${HY}" width="${W}" height="${H - HY}"/><path class="horizon" d="M0 ${HY}H${W}"/>` +
+    `<rect class="sky-fill" width="${W}" height="${H}" fill="url(#sk-sky)"/>${starsSvg(STARS, starLight(e))}${shooting}${star}${veil}${clouds}${goldenClouds}${birds}${glow}` +
+    `<rect class="ground" y="${HY}" width="${W}" height="${H - HY}"/><path class="horizon" d="M0 ${HY}H${W}"/>${reflect}` +
     `${curve}<g clip-path="url(#sk-above)">${body}</g></svg>`
   );
 }
@@ -2348,8 +2371,8 @@ function stripHtml(m, still) {
   const [c0, c1, c2] = skyColors(sun.elevation);
   const at = `left:calc(10px + (100% - 20px) * ${p.toFixed(4)})`;
   const dot = night
-    ? `<svg class="dot-body" viewBox="-8 -8 16 16" style="${at}">${moonDisc(0, 0, 7, moon)}</svg>`
-    : `<svg class="dot-body" viewBox="-8 -8 16 16" style="${at}"><circle r="7" fill="url(#sk-strip-sun)"/><defs><radialGradient id="sk-strip-sun" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fffbe6"/><stop offset=".55" stop-color="#ffd54f"/><stop offset="1" stop-color="${phase === "day" ? "#ffa000" : "#f4511e"}"/></radialGradient></defs></svg>`;
+    ? `<svg class="dot-body moon" viewBox="-8 -8 16 16" style="${at}">${moonDisc(0, 0, 7, moon)}</svg>`
+    : `<svg class="dot-body sun" viewBox="-8 -8 16 16" style="${at}"><circle r="7" fill="url(#sk-strip-sun)"/><defs><radialGradient id="sk-strip-sun" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fffbe6"/><stop offset=".55" stop-color="#ffd54f"/><stop offset="1" stop-color="${phase === "day" ? "#ffa000" : "#f4511e"}"/></radialGradient></defs></svg>`;
   const stars = starsSvg(
     [
       [30, 7, 0.6],
@@ -2414,6 +2437,9 @@ const BASE_STYLE = `
   .type-icon { position: relative; display: flex; flex: none; width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center;
                background: color-mix(in srgb, var(--sk-accent) 16%, transparent); }
   .type-icon .icon { width: 24px; height: 24px; fill: color-mix(in srgb, var(--sk-accent) 75%, var(--primary-text-color)); }
+  .icon.a-sun { animation: sk-spin 6s linear infinite; }
+  .icon.a-moon { animation: sk-rock 6s ease-in-out infinite; }
+  @keyframes sk-rock { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
   .warning { padding: 16px; color: color-mix(in srgb, var(--sk-golden) 50%, var(--primary-text-color)); }
   .zoom { all: unset; flex: none; cursor: pointer; width: 24px; height: 24px; margin-right: -4px; border-radius: 50%;
           display: grid; place-items: center; color: var(--secondary-text-color);
@@ -2425,6 +2451,8 @@ const BASE_STYLE = `
   .moon-disc .dark { fill: #3a3e52; }
   .moon-disc .lit { fill: #fdf3c8; }
   .moon-disc .crater { fill: #1b1e2c; opacity: .14; }
+  .moon-pic .m-glow { fill: #fdf3c8; opacity: calc(var(--mg, 1) * .1); animation: sk-moonglow 3s ease-in-out infinite; }
+  @keyframes sk-moonglow { 0%, 100% { opacity: calc(var(--mg, 1) * .1); } 50% { opacity: calc(var(--mg, 1) * .4); } }
   .stars .star { fill: #fffde7; transform-box: fill-box; transform-origin: center; animation: sk-twinkle 3s ease-in-out infinite; }
   .stars g:nth-child(3n) .star { animation-delay: -1s; }
   .stars g:nth-child(3n+1) .star { animation-delay: -2s; }
@@ -2464,6 +2492,16 @@ const BAND_STYLE = `
   .band-svg .halo { animation: sk-halo 3s ease-in-out infinite; }
   .band-svg .cloud { fill: #fff; opacity: .75; animation: sk-drift 6s ease-in-out infinite; }
   .band-svg .cloud.late { animation-delay: -3s; }
+  .band-svg .golden .cloud { fill: #ffc9a3; opacity: .7; }
+  .band-svg .birds { transform: translate(-40px, 52px); animation: sk-fly 12s linear infinite; }
+  .band-svg .bird { fill: none; stroke: #2a3a5a; stroke-width: 1; stroke-linecap: round; opacity: .6;
+                    transform-box: fill-box; transform-origin: center bottom; animation: sk-flap .5s ease-in-out infinite; }
+  .band-svg .bird.late { animation-delay: -.25s; }
+  .band-svg .reflect ellipse { fill: #ffcc80; opacity: .6; transform-box: fill-box; transform-origin: center; animation: sk-ripple 3s ease-in-out infinite; }
+  .band-svg .reflect .late { animation-delay: -1.5s; }
+  .band-svg .evening-star circle { fill: #fffde7; }
+  .band-svg .evening-star .v-glow { opacity: .25; transform-box: fill-box; transform-origin: center; animation: sk-breathe 3s ease-in-out infinite; }
+  .band-svg .veil ellipse { fill: #c9d6ff; opacity: .16; animation: sk-veil 6s ease-in-out infinite; }
   .band-svg .horizon-glow { animation: sk-shimmer 3s ease-in-out infinite; }
   .band-svg .shooting { fill: none; stroke: #fffde7; stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 10 60; stroke-dashoffset: 70;
                         animation: sk-shoot 6s linear infinite; }
@@ -2473,6 +2511,10 @@ const BAND_STYLE = `
   @keyframes sk-spin { to { transform: rotate(45deg); } }
   @keyframes sk-halo { 0%, 100% { opacity: .7; } 50% { opacity: 1; } }
   @keyframes sk-drift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+  @keyframes sk-fly { 0% { transform: translate(-20px, 52px); } 50% { transform: translate(340px, 36px); } 100% { transform: translate(340px, 36px); } }
+  @keyframes sk-flap { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(-.4); } }
+  @keyframes sk-ripple { 0%, 100% { transform: scaleX(.75); opacity: .35; } 50% { transform: scaleX(1.15); opacity: .7; } }
+  @keyframes sk-veil { 0%, 100% { transform: translateX(-24px); } 50% { transform: translateX(24px); } }
   @keyframes sk-shimmer { 0%, 100% { opacity: .7; } 50% { opacity: 1; } }
   @keyframes sk-shoot { 0%, 70% { stroke-dashoffset: 70; opacity: 0; } 72% { opacity: 1; } 86% { stroke-dashoffset: -10; opacity: 0; } 100% { stroke-dashoffset: -10; opacity: 0; } }
 `;
@@ -2518,6 +2560,10 @@ const FULL_STYLE = `
   .tile .s.longer { color: color-mix(in srgb, var(--sk-day) 60%, var(--primary-text-color)); }
   .tile .s.shorter { color: color-mix(in srgb, var(--sk-blue) 60%, var(--primary-text-color)); }
   .t-moon { --c: #9fa8da; } .t-dawn { --c: var(--sk-golden); }
+  .tile .tw .tw-sun { animation: sk-rise 6s ease-in-out infinite; }
+  .tile .tw .tw-rays { animation: sk-rays 6s ease-in-out infinite; }
+  @keyframes sk-rise { 0%, 100% { transform: translateY(2.5px); } 50% { transform: translateY(0); } }
+  @keyframes sk-rays { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
   .season-spring { --c: #66bb6a; } .season-summer { --c: #ffb300; } .season-autumn { --c: #ef6c00; } .season-winter { --c: #42a5f5; }
   .section-title { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; text-transform: uppercase;
                    letter-spacing: .04em; color: var(--secondary-text-color); padding: 2px 0; }
@@ -2555,6 +2601,10 @@ const MINI_STYLE = `
   .strip .track.done { right: auto; height: 2px; top: 11px; background: #fff3c4; }
   .strip.p-night .track.done, .strip.p-blue .track.done { background: #c9d6ff; }
   .strip .dot-body { position: absolute; top: 5px; width: 14px; height: 14px; margin-left: -7px; overflow: visible; transition: left 1s ease; }
+  .strip .dot-body.sun { animation: sk-sunpulse 3s ease-in-out infinite; }
+  .strip .dot-body.moon { animation: sk-moonpulse 3s ease-in-out infinite; }
+  @keyframes sk-sunpulse { 0%, 100% { filter: drop-shadow(0 0 1px #ffd54f); } 50% { filter: drop-shadow(0 0 4px #ffd54f); } }
+  @keyframes sk-moonpulse { 0%, 100% { filter: drop-shadow(0 0 1px #fff9c4); } 50% { filter: drop-shadow(0 0 3px #fff9c4); } }
   .mini .sunrow { display: flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; border-radius: 12px; }
   .mini .mm { flex: none; width: 24px; height: 24px; }
   @container (max-width: 230px) {
@@ -2818,6 +2868,11 @@ class SkyCard extends HTMLElement {
     return this._config.animations === false;
   }
 
+  // `animations: false` keeps the whole card still: the header badge and the tiles' icons as well as the band.
+  _stillAttr() {
+    return this._still() ? ' class="still"' : "";
+  }
+
   // Attributes of an element opening the more-info dialog of `id` (none without an entity).
   _more(id, label) {
     return id ? ` clickable" role="button" tabindex="0" data-entity="${esc(id)}"${label ? ` aria-label="${esc(label)}"` : ""}` : '"';
@@ -2832,7 +2887,7 @@ class SkyCard extends HTMLElement {
     const chip = `<span class="chip ph-${m.phase}${this._more(m.sun.entity)} title="${esc(text + elev)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
     const sub = this._config.show_subtitle === false ? "" : this._subtitle();
     return `<div class="header">
-        <span class="type-icon">${svgIcon(m.sun.up ? "sun" : "moon")}</span>
+        <span class="type-icon">${svgIcon(m.sun.up ? "sun" : "moon", m.sun.up ? "a-sun" : "a-moon")}</span>
         <div class="titles">
           <div class="name">${esc(this._config.title || this._t("title"))}</div>
           ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
@@ -2901,7 +2956,7 @@ class SkyCard extends HTMLElement {
       sub = same ? this._t("same_as_yesterday") : this._t("vs_yesterday", { delta: fmtDelta(sun.delta, L) });
       subCls = same ? "" : sun.delta > 0 ? "longer" : "shorter";
     }
-    const daylight = this._tile("t-day", svgIcon("sun"), this._t("daylight_tile"), length, sub, sun.entity, subCls);
+    const daylight = this._tile("t-day", svgIcon("sun", "a-sun"), this._t("daylight_tile"), length, sub, sun.entity, subCls);
     const [nextAt, nextKey] = moon.nextFull < moon.nextNew ? [moon.nextFull, "next_full"] : [moon.nextNew, "next_new"];
     const moonTile = this._tile(
       "t-moon",
@@ -2913,7 +2968,7 @@ class SkyCard extends HTMLElement {
     );
     const dawn = this._tile(
       "t-dawn",
-      svgIcon("twilight"),
+      TWILIGHT_ANIM,
       this._t("dawn_dusk"),
       `${this._time(sun.dawn)} · ${this._time(sun.dusk)}`,
       sun.noon !== null ? `${this._t("solar_noon")} ${this._time(sun.noon)}` : "",
@@ -2996,7 +3051,7 @@ class SkyCard extends HTMLElement {
   _render() {
     const m = this._model();
     if (m.error) return this._errorCard(m.error);
-    return `${this._style()}<ha-card>${this._header()}${this._body()}</ha-card>`;
+    return `${this._style()}<ha-card${this._stillAttr()}>${this._header()}${this._body()}</ha-card>`;
   }
 }
 
@@ -3061,7 +3116,7 @@ class SkyMiniCard extends SkyCard {
     const moonLabel = `${this._moonName()} · ${this._t("moon_lit", { pct: fmtPct(moon.illumination * 100, L) })}`;
     // By night the strip runs from the sunset to the next sunrise, as the full card's band.
     const ends = sun.arc?.mode === "night" ? [time("sunset", sun.arc.from, "sunset"), time("sunrise", sun.arc.to, "sunrise")] : [time("sunrise", sun.sunrise, "sunrise"), time("sunset", sun.sunset, "sunset")];
-    return `${this._style(MINI_STYLE)}<ha-card>${this._header()}
+    return `${this._style(MINI_STYLE)}<ha-card${this._stillAttr()}>${this._header()}
         <div class="content"><div class="mini">
           <span class="sunrow${this._more(sun.entity, this._t(`phase_${m.phase}`))}>${ends[0]}${stripHtml(m, this._still())}${ends[1]}</span>
           <span class="mm${this._more(moon.entity, moonLabel)} title="${esc(moonLabel)}">${moonSvg(moon)}</span>

@@ -10,6 +10,7 @@ export const HOME = { latitude: 48.8566, longitude: 2.3522, time_zone: TZ };
 const paris = (iso) => Date.parse(`${iso}+01:00`);
 export const DAY = paris("2026-11-20T11:40:00");
 export const SUNSET = paris("2026-11-20T16:52:00");
+export const BLUE_HOUR = paris("2026-11-20T17:30:00");
 export const NIGHT = paris("2026-11-20T21:30:00");
 // One moment per season, for their animations.
 export const SEASON_TIMES = {

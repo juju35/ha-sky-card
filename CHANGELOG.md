@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.0 - 2026-11-14
+
+### Features
+- More animations, all following `animations: false` and `prefers-reduced-motion`:
+  - by day, a flock of birds crossing the sky now and then;
+  - in the golden hour, clouds tinted by the low sun and its reflection rippling on the ground under it;
+  - in the blue hour, the evening (or morning) star shining over the horizon on the sun's side;
+  - at night, a thin veil of cloud slowly passing;
+  - the header badge's sun turning (its moon rocking by night), the daylight tile's sun turning, the half sun rising and setting on the dawn · dusk tile, a glow around the moon as bright as it is lit;
+  - on the mini card, the sun (or moon) on the strip glowing.
+- `animations: false` now keeps the header badge and the tiles' icons still too.
+
 ## 1.0.0 - 2026-11-14
 
 ### Features

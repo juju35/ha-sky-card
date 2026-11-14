@@ -174,7 +174,7 @@ async function makeGif(gif, { fps = 20, seconds = 3 } = {}) {
 }
 
 // SKIP_GIFS=1 renders the PNG captures only (quicker while working on the layout).
-if (process.env.SKIP_GIFS !== "1") for (const g of gifs) await makeGif(g);
+if (process.env.SKIP_GIFS !== "1") for (const g of gifs) await makeGif(g, g.seconds ? { seconds: g.seconds } : {});
 await browser.close();
 rmSync(work, { recursive: true });
 
