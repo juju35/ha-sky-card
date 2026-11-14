@@ -12,15 +12,15 @@ const pair = (file, type, width, config = {}, extra = {}, first = "light") => {
 };
 
 export const shots = [
-  ...pair("card", "sky-card", 440, {}, { now: DAY }),
-  ...pair("card-golden-hour", "sky-card", 440, {}, { now: SUNSET }),
-  ...pair("card-night", "sky-card", 440, {}, { now: NIGHT }, "dark"),
-  ...pair("card-details", "sky-card", 440, {}, { now: DAY, clicks: [".section-title"] }),
+  ...pair("card", "sky-card", 430, {}, { now: DAY }),
+  ...pair("card-golden-hour", "sky-card", 430, {}, { now: SUNSET }),
+  ...pair("card-night", "sky-card", 430, {}, { now: NIGHT }, "dark"),
+  ...pair("card-details", "sky-card", 430, {}, { now: DAY, clicks: [".section-title"] }),
   // Only the core integrations (Sun, Moon, Season): the moon's illumination and next phases computed by the card.
-  ...pair("card-core", "sky-card", 440, { details: "hidden" }, { now: NIGHT, lunar: false }, "dark"),
+  ...pair("card-core", "sky-card", 430, { details: "hidden" }, { now: NIGHT, lunar: false }, "dark"),
   ...pair("mini-card", "sky-mini-card", 380, {}, { now: DAY }),
   ...pair("mini-card-night", "sky-mini-card", 380, {}, { now: NIGHT }, "dark"),
-  ...pair("mini-card-zoom", "sky-mini-card", 440, {}, { now: SUNSET, clicks: [".zoom"] }),
+  ...pair("mini-card-zoom", "sky-mini-card", 430, {}, { now: SUNSET, clicks: [".zoom"] }),
   // Narrow cards: the full card at 6 of 12 columns of a phone's Sections view, the mini card at 3.
   ...pair("card-narrow", "sky-card", 238, {}, { now: DAY }),
   ...pair("mini-card-narrow", "sky-mini-card", 170, {}, { now: DAY }),
@@ -33,7 +33,7 @@ export const shots = [
 // Only the header and the band are shown (tiles and details hidden) to keep the files small.
 const BAND = { show_tiles: false, details: "hidden" };
 export const gifs = [
-  ...pair("day", "sky-card", 440, BAND, { now: DAY }),
-  ...pair("golden-hour", "sky-card", 440, BAND, { now: SUNSET }),
-  ...pair("night", "sky-card", 440, BAND, { now: NIGHT }, "dark"),
+  ...pair("day", "sky-card", 430, BAND, { now: DAY }),
+  ...pair("golden-hour", "sky-card", 430, BAND, { now: SUNSET }),
+  ...pair("night", "sky-card", 430, BAND, { now: NIGHT }, "dark"),
 ];

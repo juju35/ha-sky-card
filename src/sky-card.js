@@ -2400,17 +2400,17 @@ const BASE_STYLE = `
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c); flex: none; display: inline-block; }
   .chip { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; white-space: nowrap;
           background: color-mix(in srgb, var(--c) 15%, transparent); color: color-mix(in srgb, var(--c) 50%, var(--primary-text-color));
-          flex: 0 1 auto; min-width: 0; max-width: 50%; overflow: hidden; box-sizing: border-box; transition: background-color .6s ease, color .6s ease; }
-  .chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .header { display: flex; align-items: flex-start; gap: 10px; padding: 12px 12px 0; }
+          flex: none; box-sizing: border-box; transition: background-color .6s ease, color .6s ease; }
+  .chip-text { white-space: nowrap; }
+  .header { display: flex; align-items: flex-start; gap: 10px; padding: 12px 12px 0; min-width: 0; }
   .header > .chip { margin-top: 11px; }
   .header > .zoom { margin-top: 8px; }
   .header:has(.sub) > .chip { margin-top: 3px; }
   .header:has(.sub) > .zoom { margin-top: 1px; }
-  .titles { flex: 1 1 0; min-width: 5ch; min-height: 40px; display: flex; flex-direction: column; justify-content: center; }
+  .titles { flex: 1 1 0; min-width: 0; min-height: 40px; display: flex; flex-direction: column; justify-content: center; }
   :host([hide-title]) .titles > .name { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .sub { font-size: 12px; line-height: 15px; color: var(--secondary-text-color); overflow-wrap: anywhere; }
+  .sub { font-size: 12px; line-height: 15px; color: var(--secondary-text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .type-icon { position: relative; display: flex; flex: none; width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center;
                background: color-mix(in srgb, var(--sk-accent) 16%, transparent); }
   .type-icon .icon { width: 24px; height: 24px; fill: color-mix(in srgb, var(--sk-accent) 75%, var(--primary-text-color)); }
@@ -2431,10 +2431,13 @@ const BASE_STYLE = `
   .stars { transition: opacity 2s ease; }
   @keyframes sk-twinkle { 0%, 100% { opacity: .35; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.1); } }
   .still *, .still { animation: none !important; }
-  @container (max-width: 230px) {
-    .chip { padding: 4px; flex: none; }
+  /* Narrow cards: the pill keeps its dot only, its label stays in its tooltip, so that it never leaves the card. */
+  @container (max-width: 280px) {
+    .chip { padding: 4px; }
     .chip-text { display: none; }
     .header { gap: 6px; }
+    .header > .chip { margin-top: 14px; }
+    .header:has(.sub) > .chip { margin-top: 6px; }
   }
 `;
 

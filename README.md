@@ -205,7 +205,7 @@ The mini card by day and at night (by night its strip runs from the sunset to th
 |---|---|
 | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/mini-card-zoom.png" alt="mini card zoomed" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-sky-card/main/screenshots/mini-card-zoom-dark.png" alt="mini card zoomed dark" width="400"> |
 
-Narrow widths: the full card at 238 px (the tiles stack their icon above the text) and the mini card at 170 px (the pill keeps its dot, the sunrise and sunset icons give way):
+Narrow widths: the full card at 238 px (the tiles stack their icon above the text) and the mini card at 170 px (the sunrise and sunset icons give way). Under 280 px the status pill keeps its dot only, its label in its tooltip, and the title and subtitle shrink with an ellipsis, so the pill never leaves the card:
 
 | | Full card | Mini card |
 |---|---|---|

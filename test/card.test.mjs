@@ -299,3 +299,15 @@ test("visual editors: options at their default stay out of the YAML; the mini ed
 test("both cards are registered for the card picker", () => {
   assert.equal(sk.window.customCards.map((c) => c.type).join(), "sky-card,sky-mini-card");
 });
+
+test("the status pill never leaves the header: it does not shrink, the titles do, and narrow cards keep its dot", () => {
+  const h = html(newCard(sk, { title: "A very long title that cannot fit on one line" }, makeHass(SUNSET)));
+  assert.match(h, /\.chip \{[^}]*flex: none;/);
+  assert.doesNotMatch(h, /\.chip \{[^}]*max-width/);
+  assert.match(h, /\.titles \{[^}]*flex: 1 1 0; min-width: 0;/);
+  assert.match(h, /\.name \{[^}]*text-overflow: ellipsis/);
+  assert.match(h, /\.sub \{[^}]*text-overflow: ellipsis/);
+  assert.match(h, /@container \(max-width: 280px\) \{[^@]*\.chip-text \{ display: none; \}/);
+  // The label stays in the tooltip.
+  assert.match(h, /class="chip ph-golden[^>]*title="Golden hour · -?\d+°"/);
+});
