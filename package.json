@@ -1,0 +1,19 @@
+{
+  "name": "ha-sky-card",
+  "version": "1.0.0",
+  "description": "Animated Lovelace cards for Home Assistant showing the sun, the moon, the lunar phase and the season.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs && node --check dist/sky-card.js",
+    "test": "node --test test/*.test.mjs",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "acorn": "^8.19.0",
+    "css-tree": "^3.2.1",
+    "playwright": "^1.56.1"
+  }
+}
