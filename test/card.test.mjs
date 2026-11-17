@@ -172,8 +172,8 @@ test("the full card: header, sky band, four tiles and the folded details", () =>
   const h = html(card);
   assert.match(h, /<div class="name">Sky<\/div>/);
   assert.match(h, /<div class="sub">Golden hour at 16:1\d<\/div>/);
-  assert.match(h, /class="chip ph-day[^>]*>.*Day/s);
-  assert.match(h, /type-icon">.*circle cx="12"/s, "sun icon by day");
+  assert.match(h, /class="banner p-day">/);
+  assert.match(h, /class="type-icon ph-day clickable"[^>]*data-entity="sun.sun"[^>]*title="Day · \d+°">.*circle cx="12"/s, "sun icon by day");
   assert.match(h, /class="band clickable"[^>]*data-entity="sun.sun"/);
   assert.match(h, /class="body sun"/);
   assert.match(h, /corner left[^>]*>.*08:07/s);
@@ -196,8 +196,8 @@ test("by night: the moon icon, the moon on the night arc, sunset then sunrise in
   const n = load(NIGHT);
   const card = newCard(n, {}, makeHass(NIGHT), n.SkyCard);
   const h = html(card);
-  assert.match(h, /class="chip ph-night/);
-  assert.match(h, /type-icon">.*M12\.3 2\.5/s, "moon icon by night");
+  assert.match(h, /class="banner p-night night">/);
+  assert.match(h, /type-icon ph-night[^>]*>.*M12\.3 2\.5/s, "moon icon by night");
   assert.match(h, /class="body moon"/);
   assert.match(h, /class="stars"/);
   assert.match(h, /corner left" title="Sunset"/);
@@ -293,7 +293,7 @@ test("visual editors: options at their default stay out of the YAML; the mini ed
   ed._hass = makeHass(DAY);
   ed._config = {};
   const schema = ed._schema().flatMap((s) => (s.schema ? s.schema : [s])).map((s) => s.name);
-  for (const n of ["title", "show_sky", "show_tiles", "details", "season_type", "language", "animations"]) assert.ok(schema.includes(n), n);
+  for (const n of ["title", "show_sky", "show_tiles", "details", "season_type", "language", "animations", "illustration", "illustration_theme"]) assert.ok(schema.includes(n), n);
 });
 
 test("both cards are registered for the card picker", () => {
@@ -301,7 +301,7 @@ test("both cards are registered for the card picker", () => {
 });
 
 test("the status pill never leaves the header: it does not shrink, the titles do, and narrow cards keep its dot", () => {
-  const h = html(newCard(sk, { title: "A very long title that cannot fit on one line" }, makeHass(SUNSET)));
+  const h = html(newCard(sk, { title: "A very long title that cannot fit on one line", illustration: false }, makeHass(SUNSET)));
   assert.match(h, /\.chip \{[^}]*flex: none;/);
   assert.doesNotMatch(h, /\.chip \{[^}]*max-width/);
   assert.match(h, /\.titles \{[^}]*flex: 1 1 0; min-width: 0;/);
@@ -310,4 +310,35 @@ test("the status pill never leaves the header: it does not shrink, the titles do
   assert.match(h, /@container \(max-width: 280px\) \{[^@]*\.chip-text \{ display: none; \}/);
   // The label stays in the tooltip.
   assert.match(h, /class="chip ph-golden[^>]*title="Golden hour · -?\d+°"/);
+});
+
+test("the illustrated header: the sun or the moon on its arc over the lawn, night by the sun or illustration_theme", () => {
+  const day = newCard(sk, {}, makeHass(DAY));
+  const h = html(day);
+  assert.match(h, /<svg class="hs-svg p-day"/);
+  assert.match(h, /<div class="lawn"><\/div>/);
+  assert.match(h, /class="hs-arc done"/);
+  assert.match(h, /\.banner \{[^}]*height: 90px;/);
+  assert.doesNotMatch(h, /class="chip /, "the phase is told by the icon's colour and tooltip");
+  // Each card's scene has its own gradient ids.
+  const other = html(newCard(sk, {}, makeHass(DAY)));
+  const id = (x) => x.match(/id="(sk-sun-h\d+)"/)[1];
+  assert.notEqual(id(h), id(other));
+  assert.match(h, new RegExp(`url\\(#${id(h).replace("sun", "glow")}\\)`));
+  // Forced night by day, forced day by night.
+  assert.match(html(newCard(sk, { illustration_theme: "night" }, makeHass(DAY))), /class="banner p-day night">/);
+  const n = load(NIGHT);
+  const night = html(newCard(n, { illustration_theme: "day" }, makeHass(NIGHT), n.SkyCard));
+  assert.match(night, /class="banner p-night">/);
+  assert.match(night, /<svg class="hs-svg p-night"[\s\S]*class="body moon"[\s\S]*class="hs-hill"/);
+  assert.throws(() => newCard(sk, { illustration_theme: "dusk" }, makeHass(DAY)));
+  // illustration: false keeps the classic header with its status pill, the icon still coloured by the phase.
+  const classic = html(newCard(sk, { illustration: false }, makeHass(SUNSET)));
+  assert.doesNotMatch(classic, /class="banner/);
+  assert.doesNotMatch(classic, /\.banner \{/);
+  assert.match(classic, /class="type-icon ph-golden">/);
+  assert.match(classic, /class="chip ph-golden/);
+  // The mini card: the same banner with its detail button.
+  const mini = html(newCard(sk, {}, makeHass(DAY), sk.SkyMiniCard));
+  assert.match(mini, /class="banner p-day">[\s\S]*class="zoom"/);
 });
