@@ -14,8 +14,12 @@ const SRC = readFileSync(new URL("../src/sky-card.js", import.meta.url), "utf8")
 function block({ rowW, titleW, chipW, nameH = 20, subH = 17, bannerH = 90 }) {
   const classes = new Set(["titles"]);
   const classList = {
-    add: (...c) => c.forEach((x) => classes.add(x)),
-    remove: (...c) => c.forEach((x) => classes.delete(x)),
+    add: (...c) => {
+      for (const x of c) classes.add(x);
+    },
+    remove: (...c) => {
+      for (const x of c) classes.delete(x);
+    },
     contains: (c) => classes.has(c),
   };
   const box = (top, height, width = 100) => ({ top, bottom: top + height, height, width, left: 0, right: width });
@@ -78,7 +82,7 @@ function containerRules(src) {
   for (const m of src.matchAll(/@container[^{]*\(max-width:\s*(\d+)px\)[^{]*\{/g)) {
     let depth = 1;
     let i = m.index + m[0].length;
-    while (depth && i < src.length) depth += src[i] === "{" ? 1 : src[i] === "}" ? -1 : 0, i++;
+    for (; depth && i < src.length; i++) depth += src[i] === "{" ? 1 : src[i] === "}" ? -1 : 0;
     out.push([Number(m[1]), src.slice(m.index + m[0].length, i - 1)]);
   }
   return out;
