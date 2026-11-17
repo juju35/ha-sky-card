@@ -6,6 +6,7 @@
 - Illustrated header on the Sky Card and the Sky Mini Card (90 px): the title on a sky tinted by the light of the moment, a scene at the right with the arc of the day (or of the night), the sun or the moon drawn with its phase sliding to where it is and setting behind the hills, and the band's animations (clouds and birds by day, the golden glow, the evening star of the blue hour, twinkling stars, a shooting star and a veil of cloud at night), over a 10 px lawn strip, day and night.
 - The header badge is coloured by the light of the moment (day, golden hour, blue hour, night), on the illustrated and the classic header.
 - New options `illustration` (`false` keeps the classic header with its pill) and `illustration_theme` (`auto`, `day`, `night`; auto: night when the sun is down or the theme is dark, even while the sun is up), in both visual editors and in every language.
+- The phase of the day is a status pill right after the title on the banner too, in the badge's colour on a frosted tint (its own line under the subtitle on a narrow card, its dot alone under 200 px). The mini card's detail button is a 24 px frosted round button 5 px from the banner's top right corner.
 
 ## 1.1.0 - 2026-11-14
 

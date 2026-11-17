@@ -2631,8 +2631,8 @@ const BASE_STYLE = `
   .still *, .still { animation: none !important; }
   /* Narrow cards: the pill keeps its dot only, its label stays in its tooltip, so that it never leaves the card. */
   @container (max-width: 280px) {
-    .chip { padding: 4px; }
-    .chip-text { display: none; }
+    .header > .chip { padding: 4px; }
+    .header > .chip .chip-text { display: none; }
     .header { gap: 6px; }
     .header > .chip { margin-top: 14px; }
     .header:has(.sub) > .chip { margin-top: 6px; }
@@ -2807,18 +2807,41 @@ const BANNER_STYLE = `
   /* The text may run over the scene's open left edge (x < 30 of 200: sky and the foot of the arc). */
   .htext { position: absolute; z-index: 1; left: 12px; top: 0; bottom: 10px; right: calc(var(--sk-scene-w) * .85);
            display: flex; align-items: center; gap: 10px; min-width: 0; }
-  .banner .titles { min-height: 0; gap: 1px; }
-  .banner .name { font-size: 16px; font-weight: 500; }
+  .banner .titles { min-height: 0; gap: 1px; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: center; align-content: center; column-gap: 8px; }
+  .banner .titles > * { flex: 1 0 100%; min-width: 0; }
+  /* The title, then its status pill 8 px after it, centred on it: the title ellipsises first but keeps about 4
+     characters (48 px); the pill keeps its whole label when it can. */
+  .banner .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .banner .name { flex: 0 1000 auto; min-width: 48px; font-size: 16px; font-weight: 500; }
+  .banner .chip { flex: 0 1 auto; min-width: 0; overflow: hidden; line-height: 16px;
+                  background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c) 45%, #0d2a45); }
+  .banner.night .chip { background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c) 35%, #ffffff); }
+  .banner .chip .dot { width: 7px; height: 7px; }
+  .banner .chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  /* A narrow card: the title takes its whole line, the pill goes under the subtitle; under 200 px only its dot
+     shows, on the title line (its text stays its tooltip and accessible name). */
+  @container (min-width: 201px) and (max-width: 260px) {
+    .banner .trow { display: contents; }
+    .banner .name { flex: 1 0 100%; }
+    .banner .sub { order: 1; }
+    .banner .chip { order: 2; margin-top: 2px; }
+  }
+  @container (max-width: 200px) { .banner .chip { flex: none; padding: 5px; } .banner .chip-text { display: none; } }
   .banner .sub { font-size: 13px; line-height: 17px; color: var(--sk-sub); }
   .banner .type-icon { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(47,128,237,.18); }
   .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
   .banner .type-icon .icon { fill: color-mix(in srgb, var(--c) 82%, #0d2a45); }
   .banner.night .type-icon .icon { fill: color-mix(in srgb, var(--c) 70%, #fff); }
-  .banner .zoom { position: absolute; z-index: 2; top: 6px; right: 6px; margin: 0; color: #10283f; background: rgba(255,255,255,.55); border-color: rgba(16,40,63,.12); }
-  .banner.night .zoom { color: #fff; background: rgba(10,20,40,.45); border-color: rgba(255,255,255,.16); }
+  /* The mini card's detail button: round, frosted, in the top right corner of the banner. */
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; border: none; color: #33506b; background: rgba(255,255,255,.55);
+                  box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner .zoom .icon { width: 16px; height: 16px; }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner.night .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
   /* Narrow card: the scene shrinks so that the title keeps its room, then only the sky and the lawn stay. */
   @container (max-width: 400px) { .banner { --sk-scene-w: 46%; } }
-  @container (max-width: 300px) { .hs-svg { display: none; } .htext { right: 12px; } .banner:has(.zoom) .htext { right: 40px; } .banner .sub { font-size: 12px; } }
+  @container (max-width: 300px) { .hs-svg { display: none; } .htext { right: 12px; } .banner:has(.zoom) .htext { right: 34px; } .banner .sub { font-size: 12px; } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -3121,7 +3144,7 @@ class SkyCard extends HTMLElement {
     return `<div class="banner p-${m.phase}${this._night() ? " night" : ""}">${headerScene(m, this._uid, this._still())}<div class="lawn"></div>
         <div class="htext">${this._typeIcon()}
           <div class="titles">
-            <div class="name">${esc(this._config.title || this._t("title"))}</div>
+            <div class="trow"><div class="name">${esc(this._config.title || this._t("title"))}</div>${this._phasePill()}</div>
             ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
           </div>
         </div>
@@ -3129,12 +3152,18 @@ class SkyCard extends HTMLElement {
       </div>`;
   }
 
-  _header() {
-    if (this._illustrated()) return this._banner();
+  // The status pill: the phase of the day (its colour is the round icon's), the sun's elevation in its tooltip.
+  _phasePill() {
     const m = this._m;
     const text = this._t(`phase_${m.phase}`);
     const elev = m.sun.elevation !== null ? ` · ${fmtDeg(m.sun.elevation, this._locale())}` : "";
-    const chip = `<span class="chip ph-${m.phase}${this._more(m.sun.entity)} title="${esc(text + elev)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
+    return `<span class="chip ph-${m.phase}${this._more(m.sun.entity)} title="${esc(text + elev)}" aria-label="${esc(text + elev)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
+  }
+
+  _header() {
+    if (this._illustrated()) return this._banner();
+    const m = this._m;
+    const chip = this._phasePill();
     const sub = this._config.show_subtitle === false ? "" : this._subtitle();
     return `<div class="header">
         <span class="type-icon ph-${m.phase}">${svgIcon(m.sun.up ? "sun" : "moon", m.sun.up ? "a-sun" : "a-moon")}</span>

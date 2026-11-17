@@ -319,7 +319,8 @@ test("the illustrated header: the sun or the moon on its arc over the lawn, nigh
   assert.match(h, /<div class="lawn"><\/div>/);
   assert.match(h, /class="hs-arc done"/);
   assert.match(h, /\.banner \{[^}]*height: 90px;/);
-  assert.doesNotMatch(h, /class="chip /, "the phase is told by the icon's colour and tooltip");
+  // The phase is the status pill right after the title, in the icon's colour.
+  assert.match(h, /<div class="trow"><div class="name">[^<]*<\/div><span class="chip ph-day[^>]*title="[^"]*" aria-label="[^"]*"><span class="dot"><\/span><span class="chip-text">Day<\/span>/);
   // Each card's scene has its own gradient ids.
   const other = html(newCard(sk, {}, makeHass(DAY)));
   const id = (x) => x.match(/id="(sk-sun-h\d+)"/)[1];
