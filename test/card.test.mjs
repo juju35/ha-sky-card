@@ -312,7 +312,7 @@ test("the status pill never leaves the header: it does not shrink, the titles do
   assert.match(h, /class="chip ph-golden[^>]*title="Golden hour · -?\d+°"/);
 });
 
-test("the illustrated header: the sun or the moon on its arc over the lawn, night by the sun or illustration_theme", () => {
+test("the illustrated header: the sun or the moon on its arc over the lawn, night by the sun, the dark theme or illustration_theme", () => {
   const day = newCard(sk, {}, makeHass(DAY));
   const h = html(day);
   assert.match(h, /<svg class="hs-svg p-day"/);
@@ -331,6 +331,10 @@ test("the illustrated header: the sun or the moon on its arc over the lawn, nigh
   const night = html(newCard(n, { illustration_theme: "day" }, makeHass(NIGHT), n.SkyCard));
   assert.match(night, /class="banner p-night">/);
   assert.match(night, /<svg class="hs-svg p-night"[\s\S]*class="body moon"[\s\S]*class="hs-hill"/);
+  // Home Assistant's dark theme: night by day too, unless forced to day.
+  assert.match(html(newCard(sk, {}, makeHass(DAY, {}, { themes: { darkMode: true } }))), /class="banner p-day night">/);
+  assert.match(html(newCard(sk, {}, makeHass(DAY, {}, { themes: { darkMode: false } }))), /class="banner p-day">/);
+  assert.match(html(newCard(sk, { illustration_theme: "day" }, makeHass(DAY, {}, { themes: { darkMode: true } }))), /class="banner p-day">/);
   assert.throws(() => newCard(sk, { illustration_theme: "dusk" }, makeHass(DAY)));
   // illustration: false keeps the classic header with its status pill, the icon still coloured by the phase.
   const classic = html(newCard(sk, { illustration: false }, makeHass(SUNSET)));

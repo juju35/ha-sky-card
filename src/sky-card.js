@@ -3097,13 +3097,12 @@ class SkyCard extends HTMLElement {
     return this._config.illustration !== false;
   }
 
-  // Night picture: forced by illustration_theme, else the sun under the horizon, else Home Assistant's dark mode.
+  // Night picture: forced by illustration_theme, else the sun under the horizon or Home Assistant's dark mode.
   _night() {
     const theme = this._config.illustration_theme;
     if (theme === "night") return true;
     if (theme === "day") return false;
-    const up = this._m.sun.up;
-    return typeof up === "boolean" ? !up : !!this._hass?.themes?.darkMode;
+    return this._m.sun.up === false || !!this._hass?.themes?.darkMode;
   }
 
   // The round icon, coloured by the phase (day, golden hour, blue hour, night): the sun turning while it is up, the
