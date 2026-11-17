@@ -171,7 +171,7 @@ test("the full card: header, sky band, four tiles and the folded details", () =>
   const card = newCard(sk, {}, makeHass(DAY));
   const h = html(card);
   assert.match(h, /<div class="name">Sky<\/div>/);
-  assert.match(h, /<div class="sub">Golden hour at 16:1\d<\/div>/);
+  assert.match(h, /<div class="sub" title="Golden hour at 16:1\d">Golden hour at 16:1\d<\/div>/);
   assert.match(h, /class="banner p-day">/);
   assert.match(h, /class="type-icon ph-day clickable"[^>]*data-entity="sun.sun"[^>]*title="Day · \d+°">.*circle cx="12"/s, "sun icon by day");
   assert.match(h, /class="band clickable"[^>]*data-entity="sun.sun"/);
@@ -300,14 +300,15 @@ test("both cards are registered for the card picker", () => {
   assert.equal(sk.window.customCards.map((c) => c.type).join(), "sky-card,sky-mini-card");
 });
 
-test("the status pill never leaves the header: it does not shrink, the titles do, and narrow cards keep its dot", () => {
+test("the status pill never leaves the header: on the title row or under the subtitle, measured, its dot when narrow", () => {
   const h = html(newCard(sk, { title: "A very long title that cannot fit on one line", illustration: false }, makeHass(SUNSET)));
-  assert.match(h, /\.chip \{[^}]*flex: none;/);
+  assert.match(h, /\.trow \.chip \{ flex: none; \}/);
   assert.doesNotMatch(h, /\.chip \{[^}]*max-width/);
   assert.match(h, /\.titles \{[^}]*flex: 1 1 0; min-width: 0;/);
   assert.match(h, /\.name \{[^}]*text-overflow: ellipsis/);
   assert.match(h, /\.sub \{[^}]*text-overflow: ellipsis/);
-  assert.match(h, /@container \(max-width: 280px\) \{[^@]*\.chip-text \{ display: none; \}/);
+  assert.match(h, /<div class="trow"><div class="name">A very long title[^<]*<\/div><span class="chip ph-golden/);
+  assert.match(h, /@container \(max-width: 200px\) \{[^@]*\.chip \.chip-text \{ display: none; \}/);
   // The label stays in the tooltip.
   assert.match(h, /class="chip ph-golden[^>]*title="Golden hour · -?\d+°"/);
 });

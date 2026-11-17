@@ -2596,12 +2596,10 @@ const BASE_STYLE = `
           flex: none; box-sizing: border-box; transition: background-color .6s ease, color .6s ease; }
   .chip-text { white-space: nowrap; }
   .header { display: flex; align-items: flex-start; gap: 10px; padding: 12px 12px 0; min-width: 0; }
-  .header > .chip { margin-top: 11px; }
   .header > .zoom { margin-top: 8px; }
-  .header:has(.sub) > .chip { margin-top: 3px; }
   .header:has(.sub) > .zoom { margin-top: 1px; }
   .titles { flex: 1 1 0; min-width: 0; min-height: 40px; display: flex; flex-direction: column; justify-content: center; }
-  :host([hide-title]) .titles > .name { display: none; }
+  :host([hide-title]) .titles .name { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sub { font-size: 12px; line-height: 15px; color: var(--secondary-text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .type-icon { position: relative; display: flex; flex: none; width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center;
@@ -2629,13 +2627,22 @@ const BASE_STYLE = `
   .stars { transition: opacity 2s ease; }
   @keyframes sk-twinkle { 0%, 100% { opacity: .35; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.1); } }
   .still *, .still { animation: none !important; }
-  /* Narrow cards: the pill keeps its dot only, its label stays in its tooltip, so that it never leaves the card. */
-  @container (max-width: 280px) {
-    .header > .chip { padding: 4px; }
-    .header > .chip .chip-text { display: none; }
+  /* The status pill (classic header and banner): on the title row, 8 px after the title, only when the whole title
+     and the pill's whole label fit there; otherwise on its own line under the subtitle, which then keeps one line.
+     Measured after each render (see _fitPill), never by a fixed width. Its dot alone at 200 px or less, or when the
+     banner has no room left for its label (pill-dot); the label stays its tooltip and accessible name. */
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow .name { flex: 0 1 auto; min-width: 0; }
+  .trow .chip { flex: none; }
+  .titles.pill-below .trow { display: contents; }
+  .titles.pill-below .sub { order: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .titles.pill-below .chip { order: 2; align-self: flex-start; margin-top: 2px; }
+  .titles.pill-dot .chip { padding: 4px; }
+  .titles.pill-dot .chip-text { display: none; }
+  @container (max-width: 200px) {
     .header { gap: 6px; }
-    .header > .chip { margin-top: 14px; }
-    .header:has(.sub) > .chip { margin-top: 6px; }
+    .chip { padding: 4px; }
+    .chip .chip-text { display: none; }
   }
 `;
 
@@ -2783,6 +2790,11 @@ const MINI_STYLE = `
   }
 `;
 
+// The banner's ground strip (the lawn), that the title block keeps clear of, and the gap between the title and the
+// status pill on its row (.trow).
+const PILL_GROUND_PX = 10;
+const PILL_GAP_PX = 8;
+
 // The illustrated header: 90 px high, the title on the sky at its left, the scene at its right standing on a 10 px
 // lawn strip drawn edge to edge, day and night. Its sky is tinted by the phase (golden, blue hour).
 const BANNER_STYLE = `
@@ -2807,26 +2819,14 @@ const BANNER_STYLE = `
   /* The text may run over the scene's open left edge (x < 30 of 200: sky and the foot of the arc). */
   .htext { position: absolute; z-index: 1; left: 12px; top: 0; bottom: 10px; right: calc(var(--sk-scene-w) * .85);
            display: flex; align-items: center; gap: 10px; min-width: 0; }
-  .banner .titles { min-height: 0; gap: 1px; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: center; align-content: center; column-gap: 8px; }
-  .banner .titles > * { flex: 1 0 100%; min-width: 0; }
-  /* The title, then its status pill 8 px after it, centred on it: the title ellipsises first but keeps about 4
-     characters (48 px); the pill keeps its whole label when it can. */
-  .banner .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
-  .banner .name { flex: 0 1000 auto; min-width: 48px; font-size: 16px; font-weight: 500; }
-  .banner .chip { flex: 0 1 auto; min-width: 0; overflow: hidden; line-height: 16px;
+  .banner .titles { min-height: 0; gap: 1px; }
+  .banner .name { font-size: 16px; font-weight: 500; }
+  .banner .chip { line-height: 16px;
                   background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c) 45%, #0d2a45); }
   .banner.night .chip { background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c) 35%, #ffffff); }
   .banner .chip .dot { width: 7px; height: 7px; }
-  .banner .chip-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  /* A narrow card: the title takes its whole line, the pill goes under the subtitle; under 200 px only its dot
-     shows, on the title line (its text stays its tooltip and accessible name). */
-  @container (min-width: 201px) and (max-width: 260px) {
-    .banner .trow { display: contents; }
-    .banner .name { flex: 1 0 100%; }
-    .banner .sub { order: 1; }
-    .banner .chip { order: 2; margin-top: 2px; }
-  }
-  @container (max-width: 200px) { .banner .chip { flex: none; padding: 5px; } .banner .chip-text { display: none; } }
+  .banner .titles.pill-dot .chip { padding: 5px; }
+  @container (max-width: 200px) { .banner .chip { padding: 5px; } }
   .banner .sub { font-size: 13px; line-height: 17px; color: var(--sk-sub); }
   .banner .type-icon { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(47,128,237,.18); }
   .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
@@ -3023,6 +3023,7 @@ class SkyCard extends HTMLElement {
       this._update();
     });
     this._outside.on();
+    this._watchPill();
     if (this._hass && this._config) this._update();
     // The sun moves: redrawn every minute while the card is on the page.
     clearInterval(this._tick);
@@ -3036,6 +3037,7 @@ class SkyCard extends HTMLElement {
     clearInterval(this._tick);
     this._tick = null;
     this._outside?.off();
+    this._unwatchPill();
     this._dropPress();
     // Left (another view, a conditional card hidden): back to the default folding.
     this._open = undefined;
@@ -3079,6 +3081,52 @@ class SkyCard extends HTMLElement {
       this._html = html;
       morph(this.shadowRoot, html);
     }
+    this._fitPill();
+  }
+
+  // The status pill goes on the title row, right after the title, only when the whole title and the pill's whole
+  // label fit there; otherwise it takes its own line under the subtitle (the subtitle then on one line). In the
+  // banner, when title, subtitle and pill still do not fit above the ground strip, the pill keeps its dot only.
+  // Measured after each render and on every new width (or once the web font is loaded), never by a fixed width.
+  _fitPill() {
+    for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
+      const row = t.querySelector(".trow");
+      const name = row?.querySelector(".name");
+      const chips = row ? [...row.children].filter((n) => n.classList.contains("chip")) : [];
+      if (!name?.getBoundingClientRect || !chips.length) continue;
+      t.classList.remove("pill-below", "pill-dot");
+      // The title's whole width (scrollWidth is rounded: 1 px more, so that a title that fits is never cut).
+      const need = chips.reduce((w, c) => w + PILL_GAP_PX + c.getBoundingClientRect().width, name.scrollWidth + 1);
+      if (need <= row.getBoundingClientRect().width + 0.5) continue;
+      t.classList.add("pill-below");
+      const banner = t.closest(".banner");
+      if (!banner) continue;
+      const box = banner.getBoundingClientRect();
+      const ground = box.bottom - PILL_GROUND_PX;
+      const out = [name, ...t.querySelectorAll(".sub"), ...chips].some((n) => {
+        const r = n.getBoundingClientRect();
+        return r.height > 0 && (r.top < box.top - 0.5 || r.bottom > ground + 0.5);
+      });
+      if (out) t.classList.add("pill-dot");
+    }
+  }
+
+  _watchPill() {
+    if (typeof ResizeObserver !== "function") return;
+    this._pillResize ??= new ResizeObserver((entries) => {
+      const w = Math.round(entries.at(-1).contentRect.width);
+      if (w === this._pillWidth) return;
+      this._pillWidth = w;
+      cancelAnimationFrame(this._pillFrame);
+      this._pillFrame = requestAnimationFrame(() => this._fitPill());
+    });
+    this._pillResize.observe(this);
+    document.fonts?.ready?.then(() => this._fitPill());
+  }
+
+  _unwatchPill() {
+    this._pillResize?.disconnect();
+    this._pillWidth = null;
   }
 
   _onClick(ev) {
@@ -3145,7 +3193,7 @@ class SkyCard extends HTMLElement {
         <div class="htext">${this._typeIcon()}
           <div class="titles">
             <div class="trow"><div class="name">${esc(this._config.title || this._t("title"))}</div>${this._phasePill()}</div>
-            ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
+            ${sub ? `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>` : ""}
           </div>
         </div>
         ${this._zoomButton()}
@@ -3168,10 +3216,9 @@ class SkyCard extends HTMLElement {
     return `<div class="header">
         <span class="type-icon ph-${m.phase}">${svgIcon(m.sun.up ? "sun" : "moon", m.sun.up ? "a-sun" : "a-moon")}</span>
         <div class="titles">
-          <div class="name">${esc(this._config.title || this._t("title"))}</div>
-          ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
+          <div class="trow"><div class="name">${esc(this._config.title || this._t("title"))}</div>${chip}</div>
+          ${sub ? `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>` : ""}
         </div>
-        ${chip}
         ${this._zoomButton()}
       </div>`;
   }
