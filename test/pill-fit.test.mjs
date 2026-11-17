@@ -35,7 +35,7 @@ function block({ rowW, titleW, chipW, nameH = 20, subH = 17, bannerH = 90 }) {
   const row = { children: [name, chip], querySelector: () => name, getBoundingClientRect: () => box(0, 20, rowW) };
   name.classList = { contains: () => false };
   const banner = bannerH === null ? null : { getBoundingClientRect: () => box(0, bannerH) };
-  const titles = { classList, querySelector: () => row, querySelectorAll: () => [sub], closest: () => banner };
+  const titles = { classList, querySelector: () => row, querySelectorAll: () => [sub], closest: () => banner, getBoundingClientRect: () => row.getBoundingClientRect() };
   return { titles, classes };
 }
 
@@ -64,6 +64,12 @@ test("the title is never cut by the pill: one pixel short is enough to move it",
 
 test("no room left above the banner's ground strip: the pill keeps its dot only", () => {
   const b = block({ rowW: 200, titleW: 250, chipW: 70, nameH: 50, subH: 17 });
+  fit(b);
+  assert.ok(b.classes.has("pill-below") && b.classes.has("pill-dot"));
+});
+
+test("a label wider than the text column under the subtitle: the pill keeps its dot only", () => {
+  const b = block({ rowW: 120, titleW: 110, chipW: 140 });
   fit(b);
   assert.ok(b.classes.has("pill-below") && b.classes.has("pill-dot"));
 });
