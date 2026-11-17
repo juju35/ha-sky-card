@@ -79,6 +79,11 @@ const STRINGS = {
     zoom_helper: "Button at the top right that switches the mini card to the full card and back",
     zoom_in: "Show the full card",
     zoom_out: "Show the compact card",
+    illustration: "Illustrated header",
+    illustration_theme: "Illustration theme",
+    theme_auto: "Automatic (night when the sun is down or the theme is dark)",
+    theme_day: "Day",
+    theme_night: "Night",
   },
   fr: {
     title: "Ciel",
@@ -147,6 +152,11 @@ const STRINGS = {
     zoom_helper: "Bouton en haut à droite qui bascule la mini-carte vers la carte complète et inversement",
     zoom_in: "Afficher la carte complète",
     zoom_out: "Afficher la carte compacte",
+    illustration: "En-tête illustré",
+    illustration_theme: "Thème de l'illustration",
+    theme_auto: "Automatique (nuit si le soleil est couché ou le thème sombre)",
+    theme_day: "Jour",
+    theme_night: "Nuit",
   },
   de: {
     title: "Himmel",
@@ -215,6 +225,11 @@ const STRINGS = {
     zoom_helper: "Schaltfläche oben rechts, die die Mini-Karte zur vollständigen Karte und zurück umschaltet",
     zoom_in: "Vollständige Karte anzeigen",
     zoom_out: "Kompakte Karte anzeigen",
+    illustration: "Illustrierte Kopfzeile",
+    illustration_theme: "Illustrationsthema",
+    theme_auto: "Automatisch (Nacht bei untergegangener Sonne oder dunklem Design)",
+    theme_day: "Tag",
+    theme_night: "Nacht",
   },
   es: {
     title: "Cielo",
@@ -283,6 +298,11 @@ const STRINGS = {
     zoom_helper: "Botón arriba a la derecha que cambia la minitarjeta a la tarjeta completa y viceversa",
     zoom_in: "Mostrar la tarjeta completa",
     zoom_out: "Mostrar la tarjeta compacta",
+    illustration: "Encabezado ilustrado",
+    illustration_theme: "Tema de la ilustración",
+    theme_auto: "Automático (noche si el sol se ha puesto o el tema es oscuro)",
+    theme_day: "Día",
+    theme_night: "Noche",
   },
   it: {
     title: "Cielo",
@@ -351,6 +371,11 @@ const STRINGS = {
     zoom_helper: "Pulsante in alto a destra che passa dalla mini scheda alla scheda completa e viceversa",
     zoom_in: "Mostra la scheda completa",
     zoom_out: "Mostra la scheda compatta",
+    illustration: "Intestazione illustrata",
+    illustration_theme: "Tema dell'illustrazione",
+    theme_auto: "Automatico (notte se il sole è tramontato o il tema è scuro)",
+    theme_day: "Giorno",
+    theme_night: "Notte",
   },
   nl: {
     title: "Hemel",
@@ -419,6 +444,11 @@ const STRINGS = {
     zoom_helper: "Knop rechtsboven die de minikaart naar de volledige kaart omschakelt en terug",
     zoom_in: "Volledige kaart tonen",
     zoom_out: "Compacte kaart tonen",
+    illustration: "Geïllustreerde koptekst",
+    illustration_theme: "Illustratiethema",
+    theme_auto: "Automatisch (nacht als de zon onder is of het thema donker is)",
+    theme_day: "Dag",
+    theme_night: "Nacht",
   },
   pt: {
     title: "Céu",
@@ -487,6 +517,11 @@ const STRINGS = {
     zoom_helper: "Botão no canto superior direito que alterna o mini cartão para o cartão completo e vice-versa",
     zoom_in: "Mostrar o cartão completo",
     zoom_out: "Mostrar o cartão compacto",
+    illustration: "Cabeçalho ilustrado",
+    illustration_theme: "Tema da ilustração",
+    theme_auto: "Automático (noite se o sol se pôs ou o tema é escuro)",
+    theme_day: "Dia",
+    theme_night: "Noite",
   },
   pl: {
     title: "Niebo",
@@ -555,6 +590,11 @@ const STRINGS = {
     zoom_helper: "Przycisk w prawym górnym rogu przełączający mini kartę na pełną kartę i z powrotem",
     zoom_in: "Pokaż pełną kartę",
     zoom_out: "Pokaż kompaktową kartę",
+    illustration: "Ilustrowany nagłówek",
+    illustration_theme: "Motyw ilustracji",
+    theme_auto: "Automatyczny (noc, gdy słońce zaszło lub motyw jest ciemny)",
+    theme_day: "Dzień",
+    theme_night: "Noc",
   },
   sr: {
     title: "Небо",
@@ -623,6 +663,11 @@ const STRINGS = {
     zoom_helper: "Дугме горе десно које пребацује мини картицу на пуну картицу и назад",
     zoom_in: "Прикажи пуну картицу",
     zoom_out: "Прикажи компактну картицу",
+    illustration: "Илустровано заглавље",
+    illustration_theme: "Тема илустрације",
+    theme_auto: "Аутоматски (ноћ када је сунце зашло или је тема тамна)",
+    theme_day: "Дан",
+    theme_night: "Ноћ",
   },
   "sr-Latn": {
     title: "Nebo",
@@ -691,6 +736,11 @@ const STRINGS = {
     zoom_helper: "Dugme gore desno koje prebacuje mini karticu na punu karticu i nazad",
     zoom_in: "Prikaži punu karticu",
     zoom_out: "Prikaži kompaktnu karticu",
+    illustration: "Ilustrovano zaglavlje",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Automatski (noć kada je sunce zašlo ili je tema tamna)",
+    theme_day: "Dan",
+    theme_night: "Noć",
   },
   ro: {
     title: "Cer",
@@ -759,6 +809,11 @@ const STRINGS = {
     zoom_helper: "Buton din dreapta sus care comută mini cardul în cardul complet și înapoi",
     zoom_in: "Afișează cardul complet",
     zoom_out: "Afișează cardul compact",
+    illustration: "Antet ilustrat",
+    illustration_theme: "Tema ilustrației",
+    theme_auto: "Automat (noapte când soarele a apus sau tema e întunecată)",
+    theme_day: "Zi",
+    theme_night: "Noapte",
   },
   da: {
     title: "Himmel",
@@ -827,6 +882,11 @@ const STRINGS = {
     zoom_helper: "Knap øverst til højre, der skifter minikortet til det fulde kort og tilbage",
     zoom_in: "Vis det fulde kort",
     zoom_out: "Vis det kompakte kort",
+    illustration: "Illustreret overskrift",
+    illustration_theme: "Illustrationstema",
+    theme_auto: "Automatisk (nat når solen er nede eller temaet er mørkt)",
+    theme_day: "Dag",
+    theme_night: "Nat",
   },
   sv: {
     title: "Himmel",
@@ -895,6 +955,11 @@ const STRINGS = {
     zoom_helper: "Knapp uppe till höger som växlar minikortet till hela kortet och tillbaka",
     zoom_in: "Visa hela kortet",
     zoom_out: "Visa det kompakta kortet",
+    illustration: "Illustrerad rubrik",
+    illustration_theme: "Illustrationstema",
+    theme_auto: "Automatiskt (natt när solen har gått ned eller temat är mörkt)",
+    theme_day: "Dag",
+    theme_night: "Natt",
   },
   bg: {
     title: "Небе",
@@ -963,6 +1028,11 @@ const STRINGS = {
     zoom_helper: "Бутон горе вдясно, който превключва мини картата към пълната карта и обратно",
     zoom_in: "Показване на пълната карта",
     zoom_out: "Показване на компактната карта",
+    illustration: "Илюстрирана заглавка",
+    illustration_theme: "Тема на илюстрацията",
+    theme_auto: "Автоматично (нощ, когато слънцето е залязло или темата е тъмна)",
+    theme_day: "Ден",
+    theme_night: "Нощ",
   },
   ru: {
     title: "Небо",
@@ -1031,6 +1101,11 @@ const STRINGS = {
     zoom_helper: "Кнопка в правом верхнем углу, переключающая мини-карточку на полную и обратно",
     zoom_in: "Показать полную карточку",
     zoom_out: "Показать компактную карточку",
+    illustration: "Иллюстрированный заголовок",
+    illustration_theme: "Тема иллюстрации",
+    theme_auto: "Автоматически (ночь, когда солнце зашло или тема тёмная)",
+    theme_day: "День",
+    theme_night: "Ночь",
   },
   uk: {
     title: "Небо",
@@ -1099,6 +1174,11 @@ const STRINGS = {
     zoom_helper: "Кнопка у правому верхньому куті, що перемикає міні-картку на повну й назад",
     zoom_in: "Показати повну картку",
     zoom_out: "Показати компактну картку",
+    illustration: "Ілюстрований заголовок",
+    illustration_theme: "Тема ілюстрації",
+    theme_auto: "Автоматично (ніч, коли сонце зайшло або тема темна)",
+    theme_day: "День",
+    theme_night: "Ніч",
   },
   hu: {
     title: "Égbolt",
@@ -1167,6 +1247,11 @@ const STRINGS = {
     zoom_helper: "Jobb felső gomb, amely a mini kártyát a teljes kártyára váltja és vissza",
     zoom_in: "Teljes kártya megjelenítése",
     zoom_out: "Kompakt kártya megjelenítése",
+    illustration: "Illusztrált fejléc",
+    illustration_theme: "Illusztráció témája",
+    theme_auto: "Automatikus (éjszaka, ha lement a nap vagy sötét a téma)",
+    theme_day: "Nappal",
+    theme_night: "Éjszaka",
   },
   sk: {
     title: "Obloha",
@@ -1235,6 +1320,11 @@ const STRINGS = {
     zoom_helper: "Tlačidlo vpravo hore, ktoré prepína mini kartu na úplnú kartu a späť",
     zoom_in: "Zobraziť úplnú kartu",
     zoom_out: "Zobraziť kompaktnú kartu",
+    illustration: "Ilustrovaná hlavička",
+    illustration_theme: "Téma ilustrácie",
+    theme_auto: "Automaticky (noc, keď slnko zapadlo alebo je téma tmavá)",
+    theme_day: "Deň",
+    theme_night: "Noc",
   },
   cs: {
     title: "Obloha",
@@ -1303,6 +1393,11 @@ const STRINGS = {
     zoom_helper: "Tlačítko vpravo nahoře, které přepíná mini kartu na úplnou kartu a zpět",
     zoom_in: "Zobrazit úplnou kartu",
     zoom_out: "Zobrazit kompaktní kartu",
+    illustration: "Ilustrovaná hlavička",
+    illustration_theme: "Motiv ilustrace",
+    theme_auto: "Automaticky (noc, když slunce zapadlo nebo je motiv tmavý)",
+    theme_day: "Den",
+    theme_night: "Noc",
   },
   sl: {
     title: "Nebo",
@@ -1371,6 +1466,11 @@ const STRINGS = {
     zoom_helper: "Gumb zgoraj desno, ki preklopi mini kartico na celotno kartico in nazaj",
     zoom_in: "Prikaži celotno kartico",
     zoom_out: "Prikaži kompaktno kartico",
+    illustration: "Ilustrirana glava",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Samodejno (noč, ko sonce zaide ali je tema temna)",
+    theme_day: "Dan",
+    theme_night: "Noč",
   },
   lv: {
     title: "Debesis",
@@ -1439,6 +1539,11 @@ const STRINGS = {
     zoom_helper: "Poga augšējā labajā stūrī, kas pārslēdz mini kartīti uz pilno kartīti un atpakaļ",
     zoom_in: "Rādīt pilno kartīti",
     zoom_out: "Rādīt kompakto kartīti",
+    illustration: "Ilustrēta galvene",
+    illustration_theme: "Ilustrācijas motīvs",
+    theme_auto: "Automātiski (nakts, kad saule norietējusi vai motīvs ir tumšs)",
+    theme_day: "Diena",
+    theme_night: "Nakts",
   },
   el: {
     title: "Ουρανός",
@@ -1507,6 +1612,11 @@ const STRINGS = {
     zoom_helper: "Κουμπί πάνω δεξιά που αλλάζει τη μίνι κάρτα στην πλήρη κάρτα και πίσω",
     zoom_in: "Εμφάνιση πλήρους κάρτας",
     zoom_out: "Εμφάνιση συμπαγούς κάρτας",
+    illustration: "Εικονογραφημένη κεφαλίδα",
+    illustration_theme: "Θέμα εικονογράφησης",
+    theme_auto: "Αυτόματο (νύχτα όταν ο ήλιος έχει δύσει ή το θέμα είναι σκοτεινό)",
+    theme_day: "Ημέρα",
+    theme_night: "Νύχτα",
   },
 };
 
@@ -2285,8 +2395,9 @@ function arcPoints(m, upTo = 1, n = 48) {
 const pathOf = (pts) => `M${pts.map(([x, y]) => `${f1(x)} ${f1(y)}`).join("L")}`;
 
 // The sun's disc (rays by day, low and orange in the golden hour) or the moon with its phase, drawn around 0 0.
-const sunBody = (phase) =>
-  `<circle class="glow" r="${phase === "day" ? 20 : 26}" fill="url(#sk-glow)"/>` +
+// `sfx` ends the gradients' ids: the header's scene has its own, apart from the band's.
+const sunBody = (phase, sfx = "") =>
+  `<circle class="glow" r="${phase === "day" ? 20 : 26}" fill="url(#sk-glow${sfx})"/>` +
   (phase === "day"
     ? `<g class="rays">${Array.from({ length: 8 }, (_, i) => {
         const an = (i * Math.PI) / 4;
@@ -2294,15 +2405,15 @@ const sunBody = (phase) =>
         return `<path d="M${p(1.4)}L${p(1.85)}"/>`;
       }).join("")}</g>`
     : "") +
-  `<circle class="sun-disc" r="8" fill="url(#${phase === "day" ? "sk-sun" : "sk-sunlow"})"/>`;
-const moonBody = (moon) => `<circle class="halo" r="20" fill="url(#sk-halo)"/>${moonDisc(0, 0, 9, moon)}`;
+  `<circle class="sun-disc" r="8" fill="url(#${phase === "day" ? "sk-sun" : "sk-sunlow"}${sfx})"/>`;
+const moonBody = (moon, sfx = "") => `<circle class="halo" r="20" fill="url(#sk-halo${sfx})"/>${moonDisc(0, 0, 9, moon)}`;
 
-const BAND_DEFS =
-  '<radialGradient id="sk-sun" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fffbe6"/><stop offset=".5" stop-color="#ffd54f"/><stop offset="1" stop-color="#ffa000"/></radialGradient>' +
-  '<radialGradient id="sk-sunlow" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fff1c1"/><stop offset=".5" stop-color="#ffb74d"/><stop offset="1" stop-color="#f4511e"/></radialGradient>' +
-  '<radialGradient id="sk-glow"><stop offset=".35" stop-color="#ffd54f" stop-opacity=".55"/><stop offset="1" stop-color="#ffd54f" stop-opacity="0"/></radialGradient>' +
-  '<radialGradient id="sk-horizon"><stop offset="0" stop-color="#ffcc80" stop-opacity=".8"/><stop offset="1" stop-color="#ff8a65" stop-opacity="0"/></radialGradient>' +
-  '<radialGradient id="sk-halo"><stop offset=".45" stop-color="#fff9c4" stop-opacity=".35"/><stop offset="1" stop-color="#fff9c4" stop-opacity="0"/></radialGradient>';
+const bandDefs = (sfx = "") =>
+  `<radialGradient id="sk-sun${sfx}" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fffbe6"/><stop offset=".5" stop-color="#ffd54f"/><stop offset="1" stop-color="#ffa000"/></radialGradient>` +
+  `<radialGradient id="sk-sunlow${sfx}" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fff1c1"/><stop offset=".5" stop-color="#ffb74d"/><stop offset="1" stop-color="#f4511e"/></radialGradient>` +
+  `<radialGradient id="sk-glow${sfx}"><stop offset=".35" stop-color="#ffd54f" stop-opacity=".55"/><stop offset="1" stop-color="#ffd54f" stop-opacity="0"/></radialGradient>` +
+  `<radialGradient id="sk-horizon${sfx}"><stop offset="0" stop-color="#ffcc80" stop-opacity=".8"/><stop offset="1" stop-color="#ff8a65" stop-opacity="0"/></radialGradient>` +
+  `<radialGradient id="sk-halo${sfx}"><stop offset=".45" stop-color="#fff9c4" stop-opacity=".35"/><stop offset="1" stop-color="#fff9c4" stop-opacity="0"/></radialGradient>`;
 
 // The sky band: its colors follow the sun's elevation, the arc of the day (or of the night) inside it, dashed from
 // end to end and solid up to now, the sun (or the moon) where it is, stars by night, clouds drifting by day.
@@ -2354,7 +2465,7 @@ function bandSvg(m, still) {
   const veil = phase === "night" ? '<g class="veil"><ellipse cx="120" cy="46" rx="46" ry="2.2"/><ellipse cx="146" cy="50" rx="30" ry="1.6"/></g>' : "";
   return (
     `<svg class="band-svg p-${phase}${still ? " still" : ""}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">` +
-    `<defs>${skyGradient("sk-sky", e)}${BAND_DEFS}<clipPath id="sk-above"><rect width="${W}" height="${HY}"/></clipPath></defs>` +
+    `<defs>${skyGradient("sk-sky", e)}${bandDefs()}<clipPath id="sk-above"><rect width="${W}" height="${HY}"/></clipPath></defs>` +
     `<rect class="sky-fill" width="${W}" height="${H}" fill="url(#sk-sky)"/>${starsSvg(STARS, starLight(e))}${shooting}${star}${veil}${clouds}${goldenClouds}${birds}${glow}` +
     `<rect class="ground" y="${HY}" width="${W}" height="${H - HY}"/><path class="horizon" d="M0 ${HY}H${W}"/>${reflect}` +
     `${curve}<g clip-path="url(#sk-above)">${body}</g></svg>`
@@ -2389,6 +2500,65 @@ function stripHtml(m, still) {
     `<span class="track"></span>${arc ? `<span class="track done" style="width:calc((100% - 20px) * ${p.toFixed(4)})"></span>` : ""}${dot}</div>`
   );
 }
+// ---------------------------------------------------------------------------
+// The illustrated header
+// ---------------------------------------------------------------------------
+
+// A 200 × 80 scene at the right of the 90 px header, standing on its 10 px lawn strip: the arc of the day (or of the
+// night), the sun (or the moon in its phase) where it is on it, setting behind the hills; and the band's own touches
+// by phase: clouds and birds by day, tinted clouds and the horizon's glow in the golden hour, the evening star in the
+// blue hour, stars, a shooting star and a veil of cloud at night. `uid` keeps each card's gradient ids apart.
+const HS_ARC = [
+  [20, 74],
+  [100, -6],
+  [180, 74],
+];
+const HS_STARS = [
+  [12, 8, 0.45],
+  [44, 18, 0.35],
+  [96, 6, 0.45],
+  [132, 24, 0.3],
+  [168, 10, 0.45],
+  [190, 30, 0.35],
+  [70, 30, 0.3],
+  [150, 42, 0.3],
+];
+const qPoint = (t, a, b, c) => (1 - t) * (1 - t) * a + 2 * (1 - t) * t * b + t * t * c;
+function headerScene(m, uid, still) {
+  const { sun, moon, phase } = m;
+  const arc = sun.arc;
+  const night = arc ? arc.mode === "night" : !sun.up;
+  const sfx = `-h${uid}`;
+  const [[x0, y0], [cx, cy], [x2, y2]] = HS_ARC;
+  const t = arc ? clamp(arc.progress, 0, 1) : 0.5;
+  // The arc up to now: the curve cut at `t` (de Casteljau), the path the body travels as in the band.
+  const x = qPoint(t, x0, cx, x2);
+  const y = qPoint(t, y0, cy, y2);
+  const done = `M${x0} ${y0}Q${f1(x0 + (cx - x0) * t)} ${f1(y0 + (cy - y0) * t)} ${f1(x)} ${f1(y)}`;
+  const inner = `<g transform="scale(${night ? 0.85 : 0.72})">${night ? moonBody(moon, sfx) : sunBody(phase, sfx)}</g>`;
+  const body = arc
+    ? `<g class="body ${night ? "moon" : "sun"}" style="offset-path:path('${done}')">${inner}</g>`
+    : `<g class="body still-body" transform="translate(100 30)">${inner}</g>`;
+  const stars = starsSvg(HS_STARS, sun.up ? 0 : Math.max(0.45, starLight(sun.elevation)));
+  const cloud = (cx1, cy1, s, late) =>
+    `<g transform="translate(${cx1} ${cy1}) scale(${s})"><g class="cloud${late ? " late" : ""}"><ellipse cx="0" cy="4" rx="14" ry="4"/><ellipse cx="6" cy="0" rx="8" ry="4.8"/></g></g>`;
+  const clouds = phase === "day" ? `<g class="clouds">${cloud(56, 18, 0.9)}${cloud(150, 30, 0.7, 1)}</g>` : phase === "golden" ? `<g class="clouds golden">${cloud(64, 22, 0.9)}${cloud(146, 34, 0.7, 1)}</g>` : "";
+  const bird = (bx, by, late) => `<g transform="translate(${bx} ${by})"><path class="bird${late ? " late" : ""}" d="M-3 0Q-1.5 -2 0 0Q1.5 -2 3 0"/></g>`;
+  const birds = phase === "day" ? `<g class="birds">${bird(0, 0)}${bird(-9, 4, 1)}${bird(-7, -5, 1)}</g>` : "";
+  const glow = phase === "golden" || phase === "blue" ? `<ellipse class="horizon-glow" cx="${f1(clamp(night ? (t < 0.5 ? x0 : x2) : x, 64, 136))}" cy="74" rx="64" ry="26" fill="url(#sk-horizon${sfx})"/>` : "";
+  const vx = x < 100 ? x + 44 : x - 44;
+  const star = phase === "blue" ? `<g class="evening-star" transform="translate(${f1(vx)} 52)"><circle class="v-glow" r="4"/><circle r="1.3"/></g>` : "";
+  const nightSky = phase === "night" ? '<path class="shooting" d="M176 6L148 22"/><g class="veil"><ellipse cx="80" cy="40" rx="34" ry="1.8"/><ellipse cx="100" cy="44" rx="22" ry="1.3"/></g>' : "";
+  return (
+    `<svg class="hs-svg p-${phase}${still ? " still" : ""}" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">` +
+    `<defs>${bandDefs(sfx)}</defs>${stars}${nightSky}${star}${clouds}${birds}${glow}` +
+    `<path class="hs-arc" d="M${x0} ${y0}Q${cx} ${cy} ${x2} ${y2}"/>${arc && t > 0.002 ? `<path class="hs-arc done" d="${done}"/>` : ""}${body}` +
+    '<path class="hs-hill far" d="M0,80 C30,70 60,64 100,66 C140,68 170,60 200,62 L200,80Z"/>' +
+    '<g class="hs-peaks"><path d="M120 74l8 -12l8 12z"/><path d="M134 74l10 -16l10 16z"/></g>' +
+    '<path class="hs-hill" d="M0,80 C40,74 90,75 200,72 L200,80Z"/></svg>'
+  );
+}
+
 // The season's own picture: a flower swaying in spring, the summer sun's turning rays, leaves falling in autumn, a
 // turning snowflake and falling snow in winter.
 const SEASON_ART = {
@@ -2426,17 +2596,15 @@ const BASE_STYLE = `
           flex: none; box-sizing: border-box; transition: background-color .6s ease, color .6s ease; }
   .chip-text { white-space: nowrap; }
   .header { display: flex; align-items: flex-start; gap: 10px; padding: 12px 12px 0; min-width: 0; }
-  .header > .chip { margin-top: 11px; }
   .header > .zoom { margin-top: 8px; }
-  .header:has(.sub) > .chip { margin-top: 3px; }
   .header:has(.sub) > .zoom { margin-top: 1px; }
   .titles { flex: 1 1 0; min-width: 0; min-height: 40px; display: flex; flex-direction: column; justify-content: center; }
-  :host([hide-title]) .titles > .name { display: none; }
+  :host([hide-title]) .titles .name { display: none; }
   .name { font-size: 16px; font-weight: 500; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sub { font-size: 12px; line-height: 15px; color: var(--secondary-text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .type-icon { position: relative; display: flex; flex: none; width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center;
-               background: color-mix(in srgb, var(--sk-accent) 16%, transparent); }
-  .type-icon .icon { width: 24px; height: 24px; fill: color-mix(in srgb, var(--sk-accent) 75%, var(--primary-text-color)); }
+               background: color-mix(in srgb, var(--c, var(--sk-accent)) 16%, transparent); transition: background-color .6s ease; }
+  .type-icon .icon { width: 24px; height: 24px; fill: color-mix(in srgb, var(--c, var(--sk-accent)) 75%, var(--primary-text-color)); }
   .icon.a-sun { animation: sk-spin 6s linear infinite; }
   .icon.a-moon { animation: sk-rock 6s ease-in-out infinite; }
   @keyframes sk-rock { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
@@ -2459,13 +2627,22 @@ const BASE_STYLE = `
   .stars { transition: opacity 2s ease; }
   @keyframes sk-twinkle { 0%, 100% { opacity: .35; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.1); } }
   .still *, .still { animation: none !important; }
-  /* Narrow cards: the pill keeps its dot only, its label stays in its tooltip, so that it never leaves the card. */
-  @container (max-width: 280px) {
-    .chip { padding: 4px; }
-    .chip-text { display: none; }
+  /* The status pill (classic header and banner): on the title row, 8 px after the title, only when the whole title
+     and the pill's whole label fit there; otherwise on its own line under the subtitle, which then keeps one line.
+     Measured after each render (see _fitPill), never by a fixed width. Its dot alone at 200 px or less, or when the
+     banner has no room left for its label (pill-dot); the label stays its tooltip and accessible name. */
+  .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .trow .name { flex: 0 1 auto; min-width: 0; }
+  .trow .chip { flex: none; }
+  .titles.pill-below .trow { display: contents; }
+  .titles.pill-below .sub { order: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .titles.pill-below .chip { order: 2; align-self: flex-start; margin-top: 2px; }
+  .titles.pill-dot .chip { padding: 4px; }
+  .titles.pill-dot .chip-text { display: none; }
+  @container (max-width: 200px) {
     .header { gap: 6px; }
-    .header > .chip { margin-top: 14px; }
-    .header:has(.sub) > .chip { margin-top: 6px; }
+    .chip { padding: 4px; }
+    .chip .chip-text { display: none; }
   }
 `;
 
@@ -2484,26 +2661,26 @@ const BAND_STYLE = `
                         animation: sk-draw 1.6s cubic-bezier(.3, .1, .3, 1) both; }
   .band-svg.p-night .arc.done, .band-svg.p-blue .arc.done { stroke: #c9d6ff; }
   .band-svg .end { fill: rgba(255,255,255,.7); }
-  .band-svg .body { offset-distance: 100%; offset-rotate: 0deg; animation: sk-travel 1.6s cubic-bezier(.3, .1, .3, 1) both; }
-  .band-svg .body.still-body { animation: none; }
-  .band-svg .glow { transform-box: fill-box; transform-origin: center; animation: sk-breathe 3s ease-in-out infinite; }
-  .band-svg .rays path { stroke: #ffd54f; stroke-width: 2.2; stroke-linecap: round; }
-  .band-svg .rays { animation: sk-spin 6s linear infinite; }
-  .band-svg .halo { animation: sk-halo 3s ease-in-out infinite; }
-  .band-svg .cloud { fill: #fff; opacity: .75; animation: sk-drift 6s ease-in-out infinite; }
-  .band-svg .cloud.late { animation-delay: -3s; }
-  .band-svg .golden .cloud { fill: #ffc9a3; opacity: .7; }
-  .band-svg .birds { transform: translate(-40px, 52px); animation: sk-fly 12s linear infinite; }
-  .band-svg .bird { fill: none; stroke: #2a3a5a; stroke-width: 1; stroke-linecap: round; opacity: .6;
+  :is(.band-svg, .hs-svg) .body { offset-distance: 100%; offset-rotate: 0deg; animation: sk-travel 1.6s cubic-bezier(.3, .1, .3, 1) both; }
+  :is(.band-svg, .hs-svg) .body.still-body { animation: none; }
+  :is(.band-svg, .hs-svg) .glow { transform-box: fill-box; transform-origin: center; animation: sk-breathe 3s ease-in-out infinite; }
+  :is(.band-svg, .hs-svg) .rays path { stroke: #ffd54f; stroke-width: 2.2; stroke-linecap: round; }
+  :is(.band-svg, .hs-svg) .rays { animation: sk-spin 6s linear infinite; }
+  :is(.band-svg, .hs-svg) .halo { animation: sk-halo 3s ease-in-out infinite; }
+  :is(.band-svg, .hs-svg) .cloud { fill: #fff; opacity: .75; animation: sk-drift 6s ease-in-out infinite; }
+  :is(.band-svg, .hs-svg) .cloud.late { animation-delay: -3s; }
+  :is(.band-svg, .hs-svg) .golden .cloud { fill: #ffc9a3; opacity: .7; }
+  :is(.band-svg, .hs-svg) .birds { transform: translate(-40px, 52px); animation: sk-fly 12s linear infinite; }
+  :is(.band-svg, .hs-svg) .bird { fill: none; stroke: #2a3a5a; stroke-width: 1; stroke-linecap: round; opacity: .6;
                     transform-box: fill-box; transform-origin: center bottom; animation: sk-flap .5s ease-in-out infinite; }
-  .band-svg .bird.late { animation-delay: -.25s; }
-  .band-svg .reflect ellipse { fill: #ffcc80; opacity: .6; transform-box: fill-box; transform-origin: center; animation: sk-ripple 3s ease-in-out infinite; }
-  .band-svg .reflect .late { animation-delay: -1.5s; }
-  .band-svg .evening-star circle { fill: #fffde7; }
-  .band-svg .evening-star .v-glow { opacity: .25; transform-box: fill-box; transform-origin: center; animation: sk-breathe 3s ease-in-out infinite; }
-  .band-svg .veil ellipse { fill: #c9d6ff; opacity: .16; animation: sk-veil 6s ease-in-out infinite; }
-  .band-svg .horizon-glow { animation: sk-shimmer 3s ease-in-out infinite; }
-  .band-svg .shooting { fill: none; stroke: #fffde7; stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 10 60; stroke-dashoffset: 70;
+  :is(.band-svg, .hs-svg) .bird.late { animation-delay: -.25s; }
+  :is(.band-svg, .hs-svg) .reflect ellipse { fill: #ffcc80; opacity: .6; transform-box: fill-box; transform-origin: center; animation: sk-ripple 3s ease-in-out infinite; }
+  :is(.band-svg, .hs-svg) .reflect .late { animation-delay: -1.5s; }
+  :is(.band-svg, .hs-svg) .evening-star circle { fill: #fffde7; }
+  :is(.band-svg, .hs-svg) .evening-star .v-glow { opacity: .25; transform-box: fill-box; transform-origin: center; animation: sk-breathe 3s ease-in-out infinite; }
+  :is(.band-svg, .hs-svg) .veil ellipse { fill: #c9d6ff; opacity: .16; animation: sk-veil 6s ease-in-out infinite; }
+  :is(.band-svg, .hs-svg) .horizon-glow { animation: sk-shimmer 3s ease-in-out infinite; }
+  :is(.band-svg, .hs-svg) .shooting { fill: none; stroke: #fffde7; stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 10 60; stroke-dashoffset: 70;
                         animation: sk-shoot 6s linear infinite; }
   @keyframes sk-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
   @keyframes sk-travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
@@ -2611,6 +2788,60 @@ const MINI_STYLE = `
     .mini .t .icon { display: none; }
     .mini { gap: 6px; font-size: 12px; }
   }
+`;
+
+// The banner's ground strip (the lawn), that the title block keeps clear of, and the gap between the title and the
+// status pill on its row (.trow).
+const PILL_GROUND_PX = 10;
+const PILL_GAP_PX = 8;
+
+// The illustrated header: 90 px high, the title on the sky at its left, the scene at its right standing on a 10 px
+// lawn strip drawn edge to edge, day and night. Its sky is tinted by the phase (golden, blue hour).
+const BANNER_STYLE = `
+  .banner { position: relative; overflow: hidden; height: 90px; color: #0d2a45; --sk-sub: #3b5b78; --sk-scene-w: min(200px, 62%);
+            background: linear-gradient(90deg, #f1f8ff 0%, #e2f1fd 34%, #b9def8 70%, #9fd0f3 100%); }
+  .banner.p-golden { background: linear-gradient(90deg, #f4f8ff 0%, #e6f0fb 34%, #f5ddc4 72%, #f7c89a 100%); }
+  .banner.p-blue { background: linear-gradient(90deg, #eff1fc 0%, #dfe4f8 34%, #c5c8ee 72%, #b2b3e2 100%); }
+  .banner.night { color: #fff; --sk-sub: rgba(255,255,255,.78);
+                  background: linear-gradient(90deg, #1b2f52 0%, #15284a 36%, #0f1f3d 72%, #0a1830 100%); }
+  .banner.night.p-blue { background: linear-gradient(90deg, #22355e 0%, #1f2f58 36%, #262d5e 72%, #33326a 100%); }
+  .banner.night.p-golden { background: linear-gradient(90deg, #1f3054 0%, #1d2b4c 36%, #3a2f4a 72%, #5a3a46 100%); }
+  .hs-svg { position: absolute; right: 0; bottom: 10px; width: var(--sk-scene-w); height: calc(100% - 10px); overflow: hidden; }
+  .hs-svg .hs-arc { fill: none; stroke: #fff; stroke-width: 1; stroke-dasharray: 2 3; opacity: .9; }
+  .hs-svg .hs-arc.done { stroke: #fff3c4; stroke-width: 1.6; stroke-dasharray: none; }
+  .night .hs-svg .hs-arc { stroke: #4a5a7a; opacity: 1; }
+  .night .hs-svg .hs-arc.done { stroke: #8fa2cc; }
+  .hs-svg .hs-hill.far { fill: #a7d39f; } .hs-svg .hs-hill { fill: #86c27f; } .hs-svg .hs-peaks { fill: #9cc3a0; }
+  .night .hs-svg .hs-hill.far { fill: #1d3a4a; } .night .hs-svg .hs-hill { fill: #17303d; } .night .hs-svg .hs-peaks { fill: #22324d; }
+  .night .hs-svg .cloud { opacity: .14; }
+  .lawn { position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: repeating-linear-gradient(90deg, #5aa83d 0 22px, #6cbb4c 22px 44px); }
+  .night .lawn { background: repeating-linear-gradient(90deg, #1f4a2a 0 22px, #245433 22px 44px); }
+  /* The text may run over the scene's open left edge (x < 30 of 200: sky and the foot of the arc). */
+  .htext { position: absolute; z-index: 1; left: 12px; top: 0; bottom: 10px; right: calc(var(--sk-scene-w) * .85);
+           display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .banner .titles { min-height: 0; gap: 1px; }
+  .banner .name { font-size: 16px; font-weight: 500; }
+  .banner .chip { line-height: 16px;
+                  background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c) 45%, #0d2a45); }
+  .banner.night .chip { background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c) 35%, #ffffff); }
+  .banner .chip .dot { width: 7px; height: 7px; }
+  .banner .titles.pill-dot .chip { padding: 5px; }
+  @container (max-width: 200px) { .banner .chip { padding: 5px; } }
+  .banner .sub { font-size: 13px; line-height: 17px; color: var(--sk-sub); }
+  .banner .type-icon { background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(47,128,237,.18); }
+  .banner.night .type-icon { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .banner .type-icon .icon { fill: color-mix(in srgb, var(--c) 82%, #0d2a45); }
+  .banner.night .type-icon .icon { fill: color-mix(in srgb, var(--c) 70%, #fff); }
+  /* The mini card's detail button: round, frosted, in the top right corner of the banner. */
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; border: none; color: #33506b; background: rgba(255,255,255,.55);
+                  box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner .zoom .icon { width: 16px; height: 16px; }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner.night .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
+  /* Narrow card: the scene shrinks so that the title keeps its room, then only the sky and the lawn stay. */
+  @container (max-width: 400px) { .banner { --sk-scene-w: 46%; } }
+  @container (max-width: 300px) { .hs-svg { display: none; } .htext { right: 12px; } .banner:has(.zoom) .htext { right: 34px; } .banner .sub { font-size: 12px; } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -2730,11 +2961,15 @@ const DETAILS = ["collapsed", "expanded", "hidden"];
 // Cards
 // ---------------------------------------------------------------------------
 
+// Numbers the cards, so that the ids in each header's scene stay apart.
+let skUid = 0;
+
 class SkyCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this._html = "";
+    this._uid = ++skUid;
     holdUnderPress(this, () => this._update());
     this.shadowRoot.addEventListener("click", (ev) => this._onClick(ev));
     // Enter / Space on an element with the button role acts as a click.
@@ -2788,6 +3023,7 @@ class SkyCard extends HTMLElement {
       this._update();
     });
     this._outside.on();
+    this._watchPill();
     if (this._hass && this._config) this._update();
     // The sun moves: redrawn every minute while the card is on the page.
     clearInterval(this._tick);
@@ -2801,6 +3037,7 @@ class SkyCard extends HTMLElement {
     clearInterval(this._tick);
     this._tick = null;
     this._outside?.off();
+    this._unwatchPill();
     this._dropPress();
     // Left (another view, a conditional card hidden): back to the default folding.
     this._open = undefined;
@@ -2812,6 +3049,7 @@ class SkyCard extends HTMLElement {
       throw new Error("entities must be a map of keys to entity ids");
     }
     if (config.details !== undefined && !DETAILS.includes(config.details)) throw new Error(`details must be one of ${DETAILS.join(", ")}`);
+    if (config.illustration_theme !== undefined && !["auto", "day", "night"].includes(config.illustration_theme)) throw new Error("illustration_theme must be one of auto, day, night");
     this._config = { ...config };
     this.toggleAttribute?.("hide-title", config.show_title === false);
     this._html = "";
@@ -2843,6 +3081,54 @@ class SkyCard extends HTMLElement {
       this._html = html;
       morph(this.shadowRoot, html);
     }
+    this._fitPill();
+  }
+
+  // The status pill goes on the title row, right after the title, only when the whole title and the pill's whole
+  // label fit there; otherwise it takes its own line under the subtitle (the subtitle then on one line). In the
+  // banner, when title, subtitle and pill still do not fit above the ground strip (or the pill's label runs past the
+  // text, over the picture), the pill keeps its dot only.
+  // Measured after each render and on every new width (or once the web font is loaded), never by a fixed width.
+  _fitPill() {
+    for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
+      const row = t.querySelector?.(".trow");
+      const name = row?.querySelector(".name");
+      const chips = row ? [...row.children].filter((n) => n.classList.contains("chip")) : [];
+      if (!name?.getBoundingClientRect || !chips.length) continue;
+      t.classList.remove("pill-below", "pill-dot");
+      // The title's whole width (scrollWidth is rounded: 1 px more, so that a title that fits is never cut).
+      const need = chips.reduce((w, c) => w + PILL_GAP_PX + c.getBoundingClientRect().width, name.scrollWidth + 1);
+      if (need <= row.getBoundingClientRect().width + 0.5) continue;
+      t.classList.add("pill-below");
+      const banner = t.closest(".banner");
+      if (!banner) continue;
+      const box = banner.getBoundingClientRect();
+      const ground = box.bottom - PILL_GROUND_PX;
+      const right = t.getBoundingClientRect().right;
+      const out = [name, ...t.querySelectorAll(".sub"), ...chips].some((n) => {
+        const r = n.getBoundingClientRect();
+        return r.height > 0 && (r.top < box.top - 0.5 || r.bottom > ground + 0.5 || r.right > right + 0.5);
+      });
+      if (out) t.classList.add("pill-dot");
+    }
+  }
+
+  _watchPill() {
+    if (typeof ResizeObserver !== "function") return;
+    this._pillResize ??= new ResizeObserver((entries) => {
+      const w = Math.round(entries.at(-1).contentRect.width);
+      if (w === this._pillWidth) return;
+      this._pillWidth = w;
+      cancelAnimationFrame(this._pillFrame);
+      this._pillFrame = requestAnimationFrame(() => this._fitPill());
+    });
+    this._pillResize.observe(this);
+    document.fonts?.ready?.then(() => this._fitPill());
+  }
+
+  _unwatchPill() {
+    this._pillResize?.disconnect();
+    this._pillWidth = null;
   }
 
   _onClick(ev) {
@@ -2880,19 +3166,61 @@ class SkyCard extends HTMLElement {
 
   // ---- Parts -------------------------------------------------------------
 
-  _header() {
+  _illustrated() {
+    return this._config.illustration !== false;
+  }
+
+  // Night picture: forced by illustration_theme, else the sun under the horizon or Home Assistant's dark mode.
+  _night() {
+    const theme = this._config.illustration_theme;
+    if (theme === "night") return true;
+    if (theme === "day") return false;
+    return this._m.sun.up === false || !!this._hass?.themes?.darkMode;
+  }
+
+  // The round icon, coloured by the phase (day, golden hour, blue hour, night): the sun turning while it is up, the
+  // moon rocking once it is down. A click opens the sun's more-info dialog.
+  _typeIcon() {
+    const m = this._m;
+    const elev = m.sun.elevation !== null ? ` · ${fmtDeg(m.sun.elevation, this._locale())}` : "";
+    const label = this._t(`phase_${m.phase}`) + elev;
+    return `<span class="type-icon ph-${m.phase}${this._more(m.sun.entity, label)} title="${esc(label)}">${svgIcon(m.sun.up ? "sun" : "moon", m.sun.up ? "a-sun" : "a-moon")}</span>`;
+  }
+
+  // The illustrated header: the title on the sky, the scene of the sun (or the moon) on its arc, the lawn strip.
+  _banner() {
+    const m = this._m;
+    const sub = this._config.show_subtitle === false ? "" : this._subtitle();
+    return `<div class="banner p-${m.phase}${this._night() ? " night" : ""}">${headerScene(m, this._uid, this._still())}<div class="lawn"></div>
+        <div class="htext">${this._typeIcon()}
+          <div class="titles">
+            <div class="trow"><div class="name">${esc(this._config.title || this._t("title"))}</div>${this._phasePill()}</div>
+            ${sub ? `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>` : ""}
+          </div>
+        </div>
+        ${this._zoomButton()}
+      </div>`;
+  }
+
+  // The status pill: the phase of the day (its colour is the round icon's), the sun's elevation in its tooltip.
+  _phasePill() {
     const m = this._m;
     const text = this._t(`phase_${m.phase}`);
     const elev = m.sun.elevation !== null ? ` · ${fmtDeg(m.sun.elevation, this._locale())}` : "";
-    const chip = `<span class="chip ph-${m.phase}${this._more(m.sun.entity)} title="${esc(text + elev)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
+    return `<span class="chip ph-${m.phase}${this._more(m.sun.entity)} title="${esc(text + elev)}" aria-label="${esc(text + elev)}"><span class="dot"></span><span class="chip-text">${esc(text)}</span></span>`;
+  }
+
+  _header() {
+    if (this._illustrated()) return this._banner();
+    const m = this._m;
+    const chip = this._phasePill();
     const sub = this._config.show_subtitle === false ? "" : this._subtitle();
     return `<div class="header">
-        <span class="type-icon">${svgIcon(m.sun.up ? "sun" : "moon", m.sun.up ? "a-sun" : "a-moon")}</span>
+        <span class="type-icon ph-${m.phase}">${svgIcon(m.sun.up ? "sun" : "moon", m.sun.up ? "a-sun" : "a-moon")}</span>
         <div class="titles">
-          <div class="name">${esc(this._config.title || this._t("title"))}</div>
-          ${sub ? `<div class="sub">${esc(sub)}</div>` : ""}
+          <div class="trow"><div class="name">${esc(this._config.title || this._t("title"))}</div>${chip}</div>
+          ${sub ? `<div class="sub" title="${esc(sub)}">${esc(sub)}</div>` : ""}
         </div>
-        ${chip}
         ${this._zoomButton()}
       </div>`;
   }
@@ -3030,7 +3358,7 @@ class SkyCard extends HTMLElement {
   }
 
   _style(extra = "") {
-    return `<style>${BASE_STYLE}${BAND_STYLE}${SEASON_STYLE}${FULL_STYLE}${extra}</style>`;
+    return `<style>${BASE_STYLE}${BAND_STYLE}${SEASON_STYLE}${FULL_STYLE}${this._illustrated() ? BANNER_STYLE : ""}${extra}</style>`;
   }
 
   _model() {
@@ -3167,6 +3495,7 @@ class SkyCardEditor extends HTMLElement {
   // [name, default]
   static get toggles() {
     return [
+      ["illustration", true],
       ["show_title", true],
       ["show_subtitle", true],
       ["show_sky", true],
@@ -3176,7 +3505,7 @@ class SkyCardEditor extends HTMLElement {
   }
 
   static get defaults() {
-    return { details: "collapsed", season_type: "astronomical" };
+    return { details: "collapsed", season_type: "astronomical", illustration_theme: "auto" };
   }
 
   setConfig(config) {
@@ -3194,6 +3523,7 @@ class SkyCardEditor extends HTMLElement {
     return [
       { name: "title", selector: { text: {} } },
       { type: "grid", name: "", schema: this.constructor.toggles.map(([name]) => ({ name, selector: { boolean: {} } })) },
+      { name: "illustration_theme", selector: { select: { mode: "dropdown", options: ["auto", "day", "night"].map((value) => ({ value, label: tr(`theme_${value}`) })) } } },
       { name: "details", selector: { select: { mode: "dropdown", options: DETAILS.map((value) => ({ value, label: tr(`details_${value}`) })) } } },
       {
         name: "season_type",

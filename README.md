@@ -31,7 +31,7 @@ The cards work on top of the [Sun](https://www.home-assistant.io/integrations/su
 ## Features
 
 - Two cards: a full **Sky Card** (`custom:sky-card`) and a compact **Sky Mini Card** (`custom:sky-mini-card`)
-- Header: a sun (by day) or moon (by night) badge, the **next event** as subtitle (*Golden hour at 16:14*, *Sunset at 17:04*, *Sunrise at 08:08*) and the light of the moment as a pill: **Day**, **Golden hour**, **Blue hour** or **Night**
+- **Illustrated header** (90 px): the title on a sky tinted by the light of the moment, a little scene at its right — the arc of the day (or of the night) with the sun, or the moon drawn with its phase, where it is on it, setting behind the hills, clouds and birds by day, the golden glow, the evening star of the blue hour, stars and a shooting star at night — over a lawn strip; night picture when the sun is down or the theme is dark (or `illustration_theme`). The round badge (sun by day, moon by night) is coloured by the light of the moment (**Day**, **Golden hour**, **Blue hour**, **Night**, also in its tooltip), the **next event** as subtitle (*Golden hour at 16:14*, *Sunset at 17:04*, *Sunrise at 08:08*). `illustration: false` brings back the classic header with the light of the moment as a pill
 - **Sky band** whose colors follow the sun's elevation — day blue, the warm golden hour, the blue hour, the dark night with twinkling stars — with the **sun's arc** of the day inside it: dashed from sunrise to sunset, solid up to now, the sun where it is; by night the arc runs from the sunset to the next sunrise and the **moon, drawn with its phase**, crosses it. Sunrise and sunset times sit in its bottom corners
 - Four tiles: **Daylight** (length of the day and its change since yesterday), **Moon** (phase drawn as it looks, illumination, next full or new moon), **Dawn · dusk** (civil twilight, with the solar noon), **Season** (current season and days until the next one)
 - **Details** section, folded by default: golden and blue hours (morning and evening), solar noon and the sun's highest elevation, current elevation and azimuth, moonrise and moonset, the moon's age, the next full and new moons, the next solstice or equinox
@@ -114,6 +114,8 @@ type: custom:sky-mini-card
 ```yaml
 type: custom:sky-card
 title: Sky
+illustration: true
+illustration_theme: auto
 show_title: true
 show_subtitle: true
 show_sky: true
@@ -138,6 +140,8 @@ language: fr
 | Option | Card | Default | Description |
 |---|---|---|---|
 | `title` | both | `Sky` | Card title |
+| `illustration` | both | `true` | Illustrated header: the sky scene with the sun or the moon on its arc and the lawn strip. `false` keeps the classic header (round icon, title, light-of-the-moment pill) |
+| `illustration_theme` | both | `auto` | Illustration's picture: `auto` (night once the sun is under the horizon or with Home Assistant's dark theme), `day` or `night` |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the next event under the title |
 | `zoom` | mini | `true` | Detail button at the top right of the mini card: it shows the full card's content (with the same options, so `show_sky`, `show_tiles`, `details`… can be set on the mini card too, in YAML or in its visual editor) and switches back; a click outside the card also brings the compact view back. `false` removes the button |
