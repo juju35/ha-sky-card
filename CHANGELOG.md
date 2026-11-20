@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.1 - 2026-11-20
+
+### Performance
+- The day's sun events (today, yesterday and tomorrow) and moonrise and moonset are computed once per day and place, then reused: a render takes about 2 ms instead of about 27 ms (every minute, and on each click on the card).
+
+### Fixes
+- A width change pending when the card leaves the page no longer measures the header pill of a detached card.
+
+### Maintenance
+- The unit tests report the card's own coverage.
+
 ## 1.2.0 - 2026-11-17
 
 ### Features
