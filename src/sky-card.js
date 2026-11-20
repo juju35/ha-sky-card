@@ -81,7 +81,7 @@ const STRINGS = {
     zoom_out: "Show the compact card",
     illustration: "Illustrated header",
     illustration_theme: "Illustration theme",
-    theme_auto: "Automatic (night when the sun is down or the theme is dark)",
+    theme_auto: "Automatic (night with the dark theme)",
     theme_day: "Day",
     theme_night: "Night",
   },
@@ -154,7 +154,7 @@ const STRINGS = {
     zoom_out: "Afficher la carte compacte",
     illustration: "En-tête illustré",
     illustration_theme: "Thème de l'illustration",
-    theme_auto: "Automatique (nuit si le soleil est couché ou le thème sombre)",
+    theme_auto: "Automatique (nuit avec le thème sombre)",
     theme_day: "Jour",
     theme_night: "Nuit",
   },
@@ -227,7 +227,7 @@ const STRINGS = {
     zoom_out: "Kompakte Karte anzeigen",
     illustration: "Illustrierte Kopfzeile",
     illustration_theme: "Illustrationsthema",
-    theme_auto: "Automatisch (Nacht bei untergegangener Sonne oder dunklem Design)",
+    theme_auto: "Automatisch (Nacht bei dunklem Design)",
     theme_day: "Tag",
     theme_night: "Nacht",
   },
@@ -300,7 +300,7 @@ const STRINGS = {
     zoom_out: "Mostrar la tarjeta compacta",
     illustration: "Encabezado ilustrado",
     illustration_theme: "Tema de la ilustración",
-    theme_auto: "Automático (noche si el sol se ha puesto o el tema es oscuro)",
+    theme_auto: "Automático (noche con el tema oscuro)",
     theme_day: "Día",
     theme_night: "Noche",
   },
@@ -373,7 +373,7 @@ const STRINGS = {
     zoom_out: "Mostra la scheda compatta",
     illustration: "Intestazione illustrata",
     illustration_theme: "Tema dell'illustrazione",
-    theme_auto: "Automatico (notte se il sole è tramontato o il tema è scuro)",
+    theme_auto: "Automatico (notte con il tema scuro)",
     theme_day: "Giorno",
     theme_night: "Notte",
   },
@@ -446,7 +446,7 @@ const STRINGS = {
     zoom_out: "Compacte kaart tonen",
     illustration: "Geïllustreerde koptekst",
     illustration_theme: "Illustratiethema",
-    theme_auto: "Automatisch (nacht als de zon onder is of het thema donker is)",
+    theme_auto: "Automatisch (nacht bij een donker thema)",
     theme_day: "Dag",
     theme_night: "Nacht",
   },
@@ -519,7 +519,7 @@ const STRINGS = {
     zoom_out: "Mostrar o cartão compacto",
     illustration: "Cabeçalho ilustrado",
     illustration_theme: "Tema da ilustração",
-    theme_auto: "Automático (noite se o sol se pôs ou o tema é escuro)",
+    theme_auto: "Automático (noite com o tema escuro)",
     theme_day: "Dia",
     theme_night: "Noite",
   },
@@ -592,7 +592,7 @@ const STRINGS = {
     zoom_out: "Pokaż kompaktową kartę",
     illustration: "Ilustrowany nagłówek",
     illustration_theme: "Motyw ilustracji",
-    theme_auto: "Automatyczny (noc, gdy słońce zaszło lub motyw jest ciemny)",
+    theme_auto: "Automatyczny (noc przy ciemnym motywie)",
     theme_day: "Dzień",
     theme_night: "Noc",
   },
@@ -665,7 +665,7 @@ const STRINGS = {
     zoom_out: "Прикажи компактну картицу",
     illustration: "Илустровано заглавље",
     illustration_theme: "Тема илустрације",
-    theme_auto: "Аутоматски (ноћ када је сунце зашло или је тема тамна)",
+    theme_auto: "Аутоматски (ноћ уз тамну тему)",
     theme_day: "Дан",
     theme_night: "Ноћ",
   },
@@ -738,7 +738,7 @@ const STRINGS = {
     zoom_out: "Prikaži kompaktnu karticu",
     illustration: "Ilustrovano zaglavlje",
     illustration_theme: "Tema ilustracije",
-    theme_auto: "Automatski (noć kada je sunce zašlo ili je tema tamna)",
+    theme_auto: "Automatski (noć uz tamnu temu)",
     theme_day: "Dan",
     theme_night: "Noć",
   },
@@ -811,7 +811,7 @@ const STRINGS = {
     zoom_out: "Afișează cardul compact",
     illustration: "Antet ilustrat",
     illustration_theme: "Tema ilustrației",
-    theme_auto: "Automat (noapte când soarele a apus sau tema e întunecată)",
+    theme_auto: "Automat (noapte cu tema întunecată)",
     theme_day: "Zi",
     theme_night: "Noapte",
   },
@@ -884,7 +884,7 @@ const STRINGS = {
     zoom_out: "Vis det kompakte kort",
     illustration: "Illustreret overskrift",
     illustration_theme: "Illustrationstema",
-    theme_auto: "Automatisk (nat når solen er nede eller temaet er mørkt)",
+    theme_auto: "Automatisk (nat med mørkt tema)",
     theme_day: "Dag",
     theme_night: "Nat",
   },
@@ -957,7 +957,7 @@ const STRINGS = {
     zoom_out: "Visa det kompakta kortet",
     illustration: "Illustrerad rubrik",
     illustration_theme: "Illustrationstema",
-    theme_auto: "Automatiskt (natt när solen har gått ned eller temat är mörkt)",
+    theme_auto: "Automatiskt (natt med mörkt tema)",
     theme_day: "Dag",
     theme_night: "Natt",
   },
@@ -1030,7 +1030,7 @@ const STRINGS = {
     zoom_out: "Показване на компактната карта",
     illustration: "Илюстрирана заглавка",
     illustration_theme: "Тема на илюстрацията",
-    theme_auto: "Автоматично (нощ, когато слънцето е залязло или темата е тъмна)",
+    theme_auto: "Автоматично (нощ при тъмна тема)",
     theme_day: "Ден",
     theme_night: "Нощ",
   },
@@ -1103,7 +1103,7 @@ const STRINGS = {
     zoom_out: "Показать компактную карточку",
     illustration: "Иллюстрированный заголовок",
     illustration_theme: "Тема иллюстрации",
-    theme_auto: "Автоматически (ночь, когда солнце зашло или тема тёмная)",
+    theme_auto: "Автоматически (ночь при тёмной теме)",
     theme_day: "День",
     theme_night: "Ночь",
   },
@@ -1176,7 +1176,7 @@ const STRINGS = {
     zoom_out: "Показати компактну картку",
     illustration: "Ілюстрований заголовок",
     illustration_theme: "Тема ілюстрації",
-    theme_auto: "Автоматично (ніч, коли сонце зайшло або тема темна)",
+    theme_auto: "Автоматично (ніч при темній темі)",
     theme_day: "День",
     theme_night: "Ніч",
   },
@@ -1249,7 +1249,7 @@ const STRINGS = {
     zoom_out: "Kompakt kártya megjelenítése",
     illustration: "Illusztrált fejléc",
     illustration_theme: "Illusztráció témája",
-    theme_auto: "Automatikus (éjszaka, ha lement a nap vagy sötét a téma)",
+    theme_auto: "Automatikus (éjszaka sötét témával)",
     theme_day: "Nappal",
     theme_night: "Éjszaka",
   },
@@ -1322,7 +1322,7 @@ const STRINGS = {
     zoom_out: "Zobraziť kompaktnú kartu",
     illustration: "Ilustrovaná hlavička",
     illustration_theme: "Téma ilustrácie",
-    theme_auto: "Automaticky (noc, keď slnko zapadlo alebo je téma tmavá)",
+    theme_auto: "Automaticky (noc pri tmavej téme)",
     theme_day: "Deň",
     theme_night: "Noc",
   },
@@ -1395,7 +1395,7 @@ const STRINGS = {
     zoom_out: "Zobrazit kompaktní kartu",
     illustration: "Ilustrovaná hlavička",
     illustration_theme: "Motiv ilustrace",
-    theme_auto: "Automaticky (noc, když slunce zapadlo nebo je motiv tmavý)",
+    theme_auto: "Automaticky (noc při tmavém motivu)",
     theme_day: "Den",
     theme_night: "Noc",
   },
@@ -1468,7 +1468,7 @@ const STRINGS = {
     zoom_out: "Prikaži kompaktno kartico",
     illustration: "Ilustrirana glava",
     illustration_theme: "Tema ilustracije",
-    theme_auto: "Samodejno (noč, ko sonce zaide ali je tema temna)",
+    theme_auto: "Samodejno (noč pri temni temi)",
     theme_day: "Dan",
     theme_night: "Noč",
   },
@@ -1541,7 +1541,7 @@ const STRINGS = {
     zoom_out: "Rādīt kompakto kartīti",
     illustration: "Ilustrēta galvene",
     illustration_theme: "Ilustrācijas motīvs",
-    theme_auto: "Automātiski (nakts, kad saule norietējusi vai motīvs ir tumšs)",
+    theme_auto: "Automātiski (nakts ar tumšu motīvu)",
     theme_day: "Diena",
     theme_night: "Nakts",
   },
@@ -1614,7 +1614,7 @@ const STRINGS = {
     zoom_out: "Εμφάνιση συμπαγούς κάρτας",
     illustration: "Εικονογραφημένη κεφαλίδα",
     illustration_theme: "Θέμα εικονογράφησης",
-    theme_auto: "Αυτόματο (νύχτα όταν ο ήλιος έχει δύσει ή το θέμα είναι σκοτεινό)",
+    theme_auto: "Αυτόματο (νύχτα με σκοτεινό θέμα)",
     theme_day: "Ημέρα",
     theme_night: "Νύχτα",
   },
@@ -1927,6 +1927,21 @@ function moonDay(start, end, lat, lon) {
   return { rise: c.up[0] ?? null, set: c.down[0] ?? null };
 }
 
+// A day's sun and moon events only change with the day and the place: computed once (some 20 ms for the three days a
+// render reads) and kept for the next renders. The results are shared: never changed by their readers.
+const DAY_MEMO = new Map();
+const dayMemo = (kind, fn, start, end, lat, lon) => {
+  const key = `${kind}|${start}|${end}|${lat}|${lon}`;
+  let v = DAY_MEMO.get(key);
+  if (!v) {
+    v = fn(start, end, lat, lon);
+    if (DAY_MEMO.size >= 16) DAY_MEMO.delete(DAY_MEMO.keys().next().value);
+    DAY_MEMO.set(key, v);
+  }
+  return v;
+};
+const sunDayOf = (start, end, lat, lon) => dayMemo("sun", sunDay, start, end, lat, lon);
+
 // The phase name of the Moon integration for a moon `age` days old, on its 0–28 scale: new, quarters and full last
 // about a day each.
 const MOON_PHASES = ["new_moon", "waxing_crescent", "first_quarter", "waxing_gibbous", "full_moon", "waning_gibbous", "last_quarter", "waning_crescent"];
@@ -2154,7 +2169,7 @@ function skyModel(hass, config, now = Date.now()) {
   const a = sunState?.attributes || {};
 
   // ── Sun ──
-  const computed = loc ? sunDay(start, end, loc.lat, loc.lon) : null;
+  const computed = loc ? sunDayOf(start, end, loc.lat, loc.lon) : null;
   const sun = { ...(computed || { goldenAM: [null, null], goldenPM: [null, null], blueAM: [null, null], bluePM: [null, null], curve: null }) };
   // Sun's own times win for today: they are Home Assistant's.
   for (const [key, attr] of [
@@ -2171,13 +2186,13 @@ function skyModel(hass, config, now = Date.now()) {
   if (!computed && sun.sunrise && sun.sunset) sun.daylight = sun.sunset - sun.sunrise;
   if (computed) {
     const yStart = dayStart(start - 12 * 3600e3, tz);
-    const yesterday = sunDay(yStart, start, loc.lat, loc.lon);
+    const yesterday = sunDayOf(yStart, start, loc.lat, loc.lon);
     if (computed.daylight !== null && yesterday.daylight !== null && !computed.polar && !yesterday.polar) sun.delta = computed.daylight - yesterday.daylight;
     sun.yesterdaySunset = yesterday.sunset;
   }
   // Yesterday's sunset and tomorrow's sunrise frame the night; without a home location, sun.sun's next times a day
   // apart stand in for them.
-  const tomorrow = loc ? sunDay(end, nextDay(end, tz), loc.lat, loc.lon) : null;
+  const tomorrow = loc ? sunDayOf(end, nextDay(end, tz), loc.lat, loc.lon) : null;
   const nextRising = parseTime(a.next_rising);
   const nextSetting = parseTime(a.next_setting);
   sun.tomorrowSunrise = tomorrow?.sunrise ?? (nextRising !== null && !sameDay(nextRising, now, tz) ? nextRising : sun.sunrise !== null ? sun.sunrise + DAY_MS : null);
@@ -2241,7 +2256,7 @@ function skyModel(hass, config, now = Date.now()) {
     moon.rise = rise;
     moon.set = set;
   } else if (loc) {
-    Object.assign(moon, moonDay(start, end, loc.lat, loc.lon));
+    Object.assign(moon, dayMemo("moon", moonDay, start, end, loc.lat, loc.lon));
     moon.computed.push("times");
   } else {
     moon.rise = moon.set = null;
@@ -2802,6 +2817,7 @@ const BANNER_STYLE = `
             background: linear-gradient(90deg, #f1f8ff 0%, #e2f1fd 34%, #b9def8 70%, #9fd0f3 100%); }
   .banner.p-golden { background: linear-gradient(90deg, #f4f8ff 0%, #e6f0fb 34%, #f5ddc4 72%, #f7c89a 100%); }
   .banner.p-blue { background: linear-gradient(90deg, #eff1fc 0%, #dfe4f8 34%, #c5c8ee 72%, #b2b3e2 100%); }
+  .banner.p-night { background: linear-gradient(90deg, #eceffa 0%, #d9def3 34%, #b4bde3 72%, #9aa5d4 100%); }
   .banner.night { color: #fff; --sk-sub: rgba(255,255,255,.78);
                   background: linear-gradient(90deg, #1b2f52 0%, #15284a 36%, #0f1f3d 72%, #0a1830 100%); }
   .banner.night.p-blue { background: linear-gradient(90deg, #22355e 0%, #1f2f58 36%, #262d5e 72%, #33326a 100%); }
@@ -3128,6 +3144,7 @@ class SkyCard extends HTMLElement {
 
   _unwatchPill() {
     this._pillResize?.disconnect();
+    if (typeof cancelAnimationFrame === "function") cancelAnimationFrame(this._pillFrame);
     this._pillWidth = null;
   }
 
@@ -3170,12 +3187,13 @@ class SkyCard extends HTMLElement {
     return this._config.illustration !== false;
   }
 
-  // Night picture: forced by illustration_theme, else the sun under the horizon or Home Assistant's dark mode.
+  // Night picture: forced by illustration_theme, else Home Assistant's dark mode only (the ha-* charter). The sky's
+  // phase (the sun under the horizon) still tints the light picture and puts the moon on the night arc.
   _night() {
     const theme = this._config.illustration_theme;
     if (theme === "night") return true;
     if (theme === "day") return false;
-    return this._m.sun.up === false || !!this._hass?.themes?.darkMode;
+    return !!this._hass?.themes?.darkMode;
   }
 
   // The round icon, coloured by the phase (day, golden hour, blue hour, night): the sun turning while it is up, the

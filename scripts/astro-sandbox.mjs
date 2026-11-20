@@ -37,5 +37,6 @@ export function sandbox(names, { now, extra = {} } = {}) {
   };
   ctx.window = ctx;
   vm.createContext(ctx);
-  return vm.runInContext(`${source}\n({ ${names.join(", ")} })`, ctx);
+  // The file name lets `node --test --experimental-test-coverage` report the card's own coverage.
+  return vm.runInContext(`${source}\n({ ${names.join(", ")} })`, ctx, { filename: new URL("../src/sky-card.js", import.meta.url).href });
 }

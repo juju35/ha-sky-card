@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.2.1 - 2026-11-20
+
+### Performance
+- The day's sun events (today, yesterday and tomorrow) and moonrise and moonset are computed once per day and place, then reused: a render takes about 2 ms instead of about 27 ms (every minute, and on each click on the card).
+
+### Fixes
+- `illustration_theme: auto` follows the ha-* charter: the night picture only with Home Assistant's dark theme; with a light theme the night sky stays a light picture (a pale night tint, the moon on the night arc, the stars). `illustration_theme: day|night` still forces it.
+- A width change pending when the card leaves the page no longer measures the header pill of a detached card.
+
+### Maintenance
+- The unit tests report the card's own coverage.
+
 ## 1.2.0 - 2026-11-17
 
 ### Features

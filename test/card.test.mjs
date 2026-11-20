@@ -37,6 +37,14 @@ test("sun times match published ones (Paris, 20 November 2026)", () => {
   assert.equal(d.polar, null);
 });
 
+test("a day's sun events are computed once per day and place, then reused", () => {
+  const start = sk.dayStart(DAY, TZ);
+  const a = sk.sunDayOf(start, start + 86400e3, HOME.latitude, HOME.longitude);
+  assert.equal(sk.sunDayOf(start, start + 86400e3, HOME.latitude, HOME.longitude), a);
+  assert.deepEqual(a, sk.sunDay(start, start + 86400e3, HOME.latitude, HOME.longitude));
+  assert.notEqual(sk.sunDayOf(start, start + 86400e3, -33.9, 18.4), a);
+});
+
 test("moon phases, illumination and solstices follow Meeus' series", () => {
   near(sk.nextMoonPhase(DAY, true), Date.parse("2026-11-24T14:53:00Z"), 3, "full moon");
   near(sk.nextMoonPhase(DAY, false), Date.parse("2026-12-09T00:52:00Z"), 3, "new moon");
@@ -196,7 +204,8 @@ test("by night: the moon icon, the moon on the night arc, sunset then sunrise in
   const n = load(NIGHT);
   const card = newCard(n, {}, makeHass(NIGHT), n.SkyCard);
   const h = html(card);
-  assert.match(h, /class="banner p-night night">/);
+  // Light theme: the night sky stays a light picture (night picture = dark theme only).
+  assert.match(h, /class="banner p-night">/);
   assert.match(h, /type-icon ph-night[^>]*>.*M12\.3 2\.5/s, "moon icon by night");
   assert.match(h, /class="body moon"/);
   assert.match(h, /class="stars"/);
@@ -313,7 +322,7 @@ test("the status pill never leaves the header: on the title row or under the sub
   assert.match(h, /class="chip ph-golden[^>]*title="Golden hour · -?\d+°"/);
 });
 
-test("the illustrated header: the sun or the moon on its arc over the lawn, night by the sun, the dark theme or illustration_theme", () => {
+test("the illustrated header: the sun or the moon on its arc over the lawn, night by the dark theme or illustration_theme", () => {
   const day = newCard(sk, {}, makeHass(DAY));
   const h = html(day);
   assert.match(h, /<svg class="hs-svg p-day"/);
@@ -333,7 +342,8 @@ test("the illustrated header: the sun or the moon on its arc over the lawn, nigh
   const night = html(newCard(n, { illustration_theme: "day" }, makeHass(NIGHT), n.SkyCard));
   assert.match(night, /class="banner p-night">/);
   assert.match(night, /<svg class="hs-svg p-night"[\s\S]*class="body moon"[\s\S]*class="hs-hill"/);
-  // Home Assistant's dark theme: night by day too, unless forced to day.
+  // Home Assistant's dark theme: night by day too, unless forced to day; by night with the dark theme.
+  assert.match(html(newCard(n, {}, makeHass(NIGHT, {}, { themes: { darkMode: true } }), n.SkyCard)), /class="banner p-night night">/);
   assert.match(html(newCard(sk, {}, makeHass(DAY, {}, { themes: { darkMode: true } }))), /class="banner p-day night">/);
   assert.match(html(newCard(sk, {}, makeHass(DAY, {}, { themes: { darkMode: false } }))), /class="banner p-day">/);
   assert.match(html(newCard(sk, { illustration_theme: "day" }, makeHass(DAY, {}, { themes: { darkMode: true } }))), /class="banner p-day">/);
