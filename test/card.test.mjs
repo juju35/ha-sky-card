@@ -37,6 +37,14 @@ test("sun times match published ones (Paris, 20 November 2026)", () => {
   assert.equal(d.polar, null);
 });
 
+test("a day's sun events are computed once per day and place, then reused", () => {
+  const start = sk.dayStart(DAY, TZ);
+  const a = sk.sunDayOf(start, start + 86400e3, HOME.latitude, HOME.longitude);
+  assert.equal(sk.sunDayOf(start, start + 86400e3, HOME.latitude, HOME.longitude), a);
+  assert.deepEqual(a, sk.sunDay(start, start + 86400e3, HOME.latitude, HOME.longitude));
+  assert.notEqual(sk.sunDayOf(start, start + 86400e3, -33.9, 18.4), a);
+});
+
 test("moon phases, illumination and solstices follow Meeus' series", () => {
   near(sk.nextMoonPhase(DAY, true), Date.parse("2026-11-24T14:53:00Z"), 3, "full moon");
   near(sk.nextMoonPhase(DAY, false), Date.parse("2026-12-09T00:52:00Z"), 3, "new moon");

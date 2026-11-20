@@ -48,6 +48,7 @@ export const load = (now) => {
     "lang",
     "intlLocale",
     "sunDay",
+    "sunDayOf",
     "sunPosition",
     "moonIllumination",
     "moonDay",

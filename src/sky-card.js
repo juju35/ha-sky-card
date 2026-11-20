@@ -1927,6 +1927,21 @@ function moonDay(start, end, lat, lon) {
   return { rise: c.up[0] ?? null, set: c.down[0] ?? null };
 }
 
+// A day's sun and moon events only change with the day and the place: computed once (some 20 ms for the three days a
+// render reads) and kept for the next renders. The results are shared: never changed by their readers.
+const DAY_MEMO = new Map();
+const dayMemo = (kind, fn, start, end, lat, lon) => {
+  const key = `${kind}|${start}|${end}|${lat}|${lon}`;
+  let v = DAY_MEMO.get(key);
+  if (!v) {
+    v = fn(start, end, lat, lon);
+    if (DAY_MEMO.size >= 16) DAY_MEMO.delete(DAY_MEMO.keys().next().value);
+    DAY_MEMO.set(key, v);
+  }
+  return v;
+};
+const sunDayOf = (start, end, lat, lon) => dayMemo("sun", sunDay, start, end, lat, lon);
+
 // The phase name of the Moon integration for a moon `age` days old, on its 0–28 scale: new, quarters and full last
 // about a day each.
 const MOON_PHASES = ["new_moon", "waxing_crescent", "first_quarter", "waxing_gibbous", "full_moon", "waning_gibbous", "last_quarter", "waning_crescent"];
@@ -2154,7 +2169,7 @@ function skyModel(hass, config, now = Date.now()) {
   const a = sunState?.attributes || {};
 
   // ── Sun ──
-  const computed = loc ? sunDay(start, end, loc.lat, loc.lon) : null;
+  const computed = loc ? sunDayOf(start, end, loc.lat, loc.lon) : null;
   const sun = { ...(computed || { goldenAM: [null, null], goldenPM: [null, null], blueAM: [null, null], bluePM: [null, null], curve: null }) };
   // Sun's own times win for today: they are Home Assistant's.
   for (const [key, attr] of [
@@ -2171,13 +2186,13 @@ function skyModel(hass, config, now = Date.now()) {
   if (!computed && sun.sunrise && sun.sunset) sun.daylight = sun.sunset - sun.sunrise;
   if (computed) {
     const yStart = dayStart(start - 12 * 3600e3, tz);
-    const yesterday = sunDay(yStart, start, loc.lat, loc.lon);
+    const yesterday = sunDayOf(yStart, start, loc.lat, loc.lon);
     if (computed.daylight !== null && yesterday.daylight !== null && !computed.polar && !yesterday.polar) sun.delta = computed.daylight - yesterday.daylight;
     sun.yesterdaySunset = yesterday.sunset;
   }
   // Yesterday's sunset and tomorrow's sunrise frame the night; without a home location, sun.sun's next times a day
   // apart stand in for them.
-  const tomorrow = loc ? sunDay(end, nextDay(end, tz), loc.lat, loc.lon) : null;
+  const tomorrow = loc ? sunDayOf(end, nextDay(end, tz), loc.lat, loc.lon) : null;
   const nextRising = parseTime(a.next_rising);
   const nextSetting = parseTime(a.next_setting);
   sun.tomorrowSunrise = tomorrow?.sunrise ?? (nextRising !== null && !sameDay(nextRising, now, tz) ? nextRising : sun.sunrise !== null ? sun.sunrise + DAY_MS : null);
@@ -2241,7 +2256,7 @@ function skyModel(hass, config, now = Date.now()) {
     moon.rise = rise;
     moon.set = set;
   } else if (loc) {
-    Object.assign(moon, moonDay(start, end, loc.lat, loc.lon));
+    Object.assign(moon, dayMemo("moon", moonDay, start, end, loc.lat, loc.lon));
     moon.computed.push("times");
   } else {
     moon.rise = moon.set = null;
@@ -3128,6 +3143,7 @@ class SkyCard extends HTMLElement {
 
   _unwatchPill() {
     this._pillResize?.disconnect();
+    if (typeof cancelAnimationFrame === "function") cancelAnimationFrame(this._pillFrame);
     this._pillWidth = null;
   }
 
