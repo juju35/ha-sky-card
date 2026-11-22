@@ -3614,7 +3614,7 @@ for (const card of [
   },
   { type: "sky-mini-card", name: "Sky Mini Card", description: "A sky strip between sunrise and sunset and the moon phase at a glance, with a detail button showing the full card." },
 ]) {
-  if (!window.customCards.some((c) => c.type === card.type)) window.customCards.push({ ...card, preview: true, documentationURL: "https://github.com/juju35/ha-sky-card" });
+  if (!window.customCards.some((c) => c.type === card.type)) window.customCards.push({ ...card, preview: false, documentationURL: "https://github.com/juju35/ha-sky-card" });
 }
 
 console.info(`%c SKY-CARD %c v${VERSION} `, "color: white; background: #ffa000; font-weight: 700;", "color: #ffa000; background: white; font-weight: 700;");
