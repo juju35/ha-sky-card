@@ -1,4 +1,4 @@
-// The card's names for the tests, from src/sky-card.js run in a sandbox (scripts/astro-sandbox.mjs) with a shadow
+// The card's names for the tests, from the bundled card source (test/source.mjs) run in a sandbox (scripts/astro-sandbox.mjs) with a shadow
 // root stand-in that keeps the HTML it is given. `now` freezes the clock.
 import { sandbox } from "../scripts/astro-sandbox.mjs";
 
