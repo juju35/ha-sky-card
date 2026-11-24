@@ -1,10 +1,9 @@
-// Runs src/sky-card.js (a classic script) in a sandbox with minimal DOM stand-ins and returns the names asked for:
+// Runs the bundled card source (test/source.mjs) (a classic script) in a sandbox with minimal DOM stand-ins and returns the names asked for:
 // the tests use it, and so do the mock states, whose sun and moon values come from the card's own astronomy.
 // `now` freezes the sandbox clock (Date.now() and new Date()).
-import { readFileSync } from "node:fs";
 import vm from "node:vm";
+import { source } from "../test/source.mjs";
 
-const source = readFileSync(new URL("../src/sky-card.js", import.meta.url), "utf8");
 
 export function sandbox(names, { now, extra = {} } = {}) {
   const registry = new Map();
