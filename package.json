@@ -1,6 +1,6 @@
 {
   "name": "ha-sky-card",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Animated Lovelace cards for Home Assistant showing the sun, the moon, the lunar phase and the season.",
   "private": true,
   "type": "module",
