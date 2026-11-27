@@ -5,7 +5,7 @@ import { H, W } from "./pictures.js";
 
 export const BASE_STYLE = `
   :host { --sk-accent: #ffa000; --sk-day: #f5a623; --sk-golden: #ff7a1a; --sk-blue: #3d6fe0; --sk-night: #5c6bc0;
-          --sk-idle: var(--disabled-text-color, #9e9e9e); }
+          --sk-idle: var(--secondary-text-color, #9e9e9e); }
   ha-card { overflow: hidden; container-type: inline-size; }
   :host { display: block; min-width: 0; --sk-natural-width: 400px; }
   :host::before { content: ""; display: grid; grid-template-columns: minmax(0, var(--sk-natural-width)); height: 0; }
@@ -149,7 +149,7 @@ export const SEASON_STYLE = `
 export const FULL_STYLE = `
   .content { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
   .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .tile { display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; gap: 10px; padding: 10px; border-radius: 12px; min-width: 0;
+  .tile { display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; gap: 10px; padding: 10px; border-radius: 10px; min-width: 0;
           background: var(--secondary-background-color, rgba(127,127,127,.08)); }
   .tile .pic { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%;
                background: color-mix(in srgb, var(--c, var(--sk-accent)) 14%, transparent); }
